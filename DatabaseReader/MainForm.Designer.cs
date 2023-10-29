@@ -40,11 +40,11 @@
             ServerNameLabel = new Label();
             DatabasesGroupBox = new GroupBox();
             DatabasesComboBox = new ComboBox();
-            statusStrip1 = new StatusStrip();
+            StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
-            statusStrip1.SuspendLayout();
+            StatusStrip.SuspendLayout();
             SuspendLayout();
             // 
             // ConnectServerGroupBox
@@ -162,15 +162,15 @@
             DatabasesComboBox.Size = new Size(526, 28);
             DatabasesComboBox.TabIndex = 0;
             // 
-            // statusStrip1
+            // StatusStrip
             // 
-            statusStrip1.ImageScalingSize = new Size(20, 20);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            statusStrip1.Location = new Point(0, 330);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(562, 26);
-            statusStrip1.TabIndex = 2;
-            statusStrip1.Text = "ConnectStatusStrip";
+            StatusStrip.ImageScalingSize = new Size(20, 20);
+            StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
+            StatusStrip.Location = new Point(0, 330);
+            StatusStrip.Name = "StatusStrip";
+            StatusStrip.Size = new Size(562, 26);
+            StatusStrip.TabIndex = 2;
+            StatusStrip.Text = "ConnectStatusStrip";
             // 
             // StatusToolStripLabel
             // 
@@ -184,7 +184,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 356);
-            Controls.Add(statusStrip1);
+            Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -195,8 +195,8 @@
             ConnectServerGroupBox.ResumeLayout(false);
             ConnectServerGroupBox.PerformLayout();
             DatabasesGroupBox.ResumeLayout(false);
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
+            StatusStrip.ResumeLayout(false);
+            StatusStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -215,7 +215,7 @@
         private Button ConnectButton;
         private GroupBox DatabasesGroupBox;
         private ComboBox DatabasesComboBox;
-        private StatusStrip statusStrip1;
+        private StatusStrip StatusStrip;
         private ToolStripStatusLabel StatusToolStripLabel;
     }
 }
