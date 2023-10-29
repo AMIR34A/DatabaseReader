@@ -83,6 +83,7 @@
             AuthenticationComboBox.Name = "AuthenticationComboBox";
             AuthenticationComboBox.Size = new Size(405, 28);
             AuthenticationComboBox.TabIndex = 2;
+            AuthenticationComboBox.SelectedValueChanged += AuthenticationComboBox_SelectedValueChanged;
             // 
             // UserNameTextBox
             // 

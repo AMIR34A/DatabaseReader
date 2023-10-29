@@ -11,4 +11,14 @@ public partial class MainForm : Form
         UserNameLabel.Enabled = PasswordLabel.Enabled = false;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = false;
     }
+
+    private void AuthenticationComboBox_SelectedValueChanged(object sender, EventArgs e)
+    {
+        bool status = true;
+        if (((ComboBox)sender).SelectedItem.Equals("SQL Server Authentication"))
+            status = false;
+            UserNameLabel.Enabled = PasswordLabel.Enabled = status;
+            UserNameTextBox.Enabled = PasswordTextBox.Enabled = status;
+        
+    }
 }
