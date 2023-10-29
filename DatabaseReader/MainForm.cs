@@ -27,7 +27,7 @@ public partial class MainForm : Form
         string sqlQuery = "SELECT name FROM sys.databases";
         connection.Open();
         using SqlCommand command = new SqlCommand(sqlQuery, connection);
-        var reader = command.ExecuteReader();
+        using var reader = command.ExecuteReader();
         List<string> databases = new List<string>();
 
         while (reader.Read())
