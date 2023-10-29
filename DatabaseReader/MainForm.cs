@@ -1,3 +1,5 @@
+using Microsoft.Data.SqlClient;
+
 namespace DatabaseReader;
 
 public partial class MainForm : Form
@@ -18,6 +20,25 @@ public partial class MainForm : Form
         UserNameLabel.Enabled = PasswordLabel.Enabled = status;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = status;
     }
+
+    private void ConnectButton_Click(object sender, EventArgs e)
+    {
+        using SqlConnection connection = new SqlConnection(GenerateConnectionString());
+        string sqlQuery = "SELECT name FROM sys.databases";
+        connection.Open();
+        using SqlCommand command = new SqlCommand(sqlQuery, connection);
+        var reader = command.ExecuteReader();
+        List<string> databases = new List<string>();
+
+        while (reader.Read())
+            databases.Add($"{reader["name"]}");
+
+        DatabasesComboBox.DataSource = databases;
+        DatabasesGroupBox.Enabled = true;
+        StatusToolStripLabel.ForeColor = Color.Green;
+        StatusToolStripLabel.Text = "Connected";
+    }
+
     private string GenerateConnectionString()
     {
         bool isIntegratedSecurity = AuthenticationComboBox.SelectedValue.Equals("Windows Authentication");

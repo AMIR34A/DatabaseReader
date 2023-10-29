@@ -73,6 +73,7 @@
             ConnectButton.TabIndex = 5;
             ConnectButton.Text = "Connect";
             ConnectButton.UseVisualStyleBackColor = true;
+            ConnectButton.Click += ConnectButton_Click;
             // 
             // AuthenticationComboBox
             // 
