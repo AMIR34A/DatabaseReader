@@ -166,7 +166,7 @@
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 330);
+            StatusStrip.Location = new Point(0, 334);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(562, 26);
             StatusStrip.TabIndex = 2;
@@ -183,7 +183,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(562, 356);
+            ClientSize = new Size(562, 360);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
