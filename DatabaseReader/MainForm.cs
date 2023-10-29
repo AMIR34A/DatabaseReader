@@ -18,4 +18,18 @@ public partial class MainForm : Form
         UserNameLabel.Enabled = PasswordLabel.Enabled = status;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = status;
     }
+    private string GenerateConnectionString()
+    {
+        bool isIntegratedSecurity = AuthenticationComboBox.SelectedValue.Equals("Windows Authentication");
+        SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
+        sqlConnectionStringBuilder.DataSource = ServerNameTextBox.Text;
+        sqlConnectionStringBuilder.IntegratedSecurity = isIntegratedSecurity;
+        sqlConnectionStringBuilder.TrustServerCertificate = true;
+        if (!isIntegratedSecurity)
+        {
+            sqlConnectionStringBuilder.UserID = UserNameTextBox.Text;
+            sqlConnectionStringBuilder.Password = PasswordTextBox.Text;
+        }
+        return sqlConnectionStringBuilder.ConnectionString;
+    }
 }
