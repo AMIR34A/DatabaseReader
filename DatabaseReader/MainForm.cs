@@ -31,7 +31,47 @@ public partial class MainForm : Form
         StatusToolStripLabel.Text = "Connected";
         await _repository.CloseConnection();
     }
+
+    private async void OpenButton_Click(object sender, EventArgs e)
+    {
+        DataGridView dataGridView = new DataGridView()
+        {
+            ReadOnly = true,
+            RowHeadersVisible = false,
+            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+            Dock = DockStyle.Fill,
+        };
+
+        string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
+        var readerColums = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        while (readerColums.Read())
+            dataGridView.Columns.Add(readerColums[readerColums.GetName(0)].ToString(), readerColums[readerColums.GetName(0)].ToString());
+
+        await _repository.CloseConnection();
+
+        sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
+        var readerRows = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+
+        while (readerRows.Read())
+        {
+            object[] row = new object[readerRows.FieldCount];
+            for (int i = 0; i < readerRows.FieldCount; i++)
+                row[i] = readerRows[readerRows.GetName(i)] != DBNull.Value ? readerRows[readerRows.GetName(i)] : "-";
+
+            dataGridView.Rows.Add(row);
+        }
+        await _repository.CloseConnection();
+
+        Form databaseShowForm = new Form()
+        {
+            Height = 500,
+            Width = 750,
+            StartPosition = FormStartPosition.CenterParent
+        };
+        databaseShowForm.Controls.Add(dataGridView);
+        databaseShowForm.Show();
     }
+
     private void AuthenticationComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
         bool status = ((ComboBox)sender).Text.Equals("SQL Server Authentication") ? true : false;
