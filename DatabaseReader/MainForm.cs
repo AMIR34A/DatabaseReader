@@ -39,6 +39,22 @@ public partial class MainForm : Form
         StatusToolStripLabel.Text = "Connected";
     }
 
+    private async void DatabasesComboBox_SelectedValueChanged(object sender, EventArgs e)
+    {
+        if (((ComboBox)sender).Text.Equals("Choose..."))
+            return;
+
+        string sqlQuery = $"SELECT TABLE_SCHEMA, TABLE_NAME FROM {DatabasesComboBox.Text}.INFORMATION_SCHEMA.TABLES";
+        using var reader = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+
+        List<string> tabels = new List<string>();
+
+        while (reader.Read())
+            tabels.Add($"{reader[reader.GetName(0)]}.{reader[reader.GetName(1)]}");
+        await _repository.CloseConnection();
+        TabelsComboBox.DataSource = tabels;
+    }
+
     private string GenerateConnectionString()
     {
         bool isIntegratedSecurity = AuthenticationComboBox.Text.Equals("Windows Authentication");
