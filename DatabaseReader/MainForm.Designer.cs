@@ -42,6 +42,7 @@
             DatabasesComboBox = new ComboBox();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
+            OpenButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -145,10 +146,11 @@
             // 
             // DatabasesGroupBox
             // 
+            DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
             DatabasesGroupBox.Location = new Point(12, 246);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
-            DatabasesGroupBox.Size = new Size(538, 68);
+            DatabasesGroupBox.Size = new Size(538, 105);
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
@@ -167,7 +169,7 @@
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 334);
+            StatusStrip.Location = new Point(0, 367);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(562, 26);
             StatusStrip.TabIndex = 2;
@@ -180,11 +182,20 @@
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
             // 
+            // OpenButton
+            // 
+            OpenButton.Location = new Point(438, 70);
+            OpenButton.Name = "OpenButton";
+            OpenButton.Size = new Size(94, 29);
+            OpenButton.TabIndex = 1;
+            OpenButton.Text = "Open";
+            OpenButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(562, 360);
+            ClientSize = new Size(562, 393);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
@@ -218,5 +229,6 @@
         private ComboBox DatabasesComboBox;
         private StatusStrip StatusStrip;
         private ToolStripStatusLabel StatusToolStripLabel;
+        private Button OpenButton;
     }
 }
