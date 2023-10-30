@@ -14,21 +14,13 @@ public partial class MainForm : Form
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = false;
     }
 
-    private void AuthenticationComboBox_SelectedValueChanged(object sender, EventArgs e)
+    private async void ConnectButton_Click(object sender, EventArgs e)
     {
-        bool status = ((ComboBox)sender).SelectedItem.Equals("SQL Server Authentication") ? true : false;
-        UserNameLabel.Enabled = PasswordLabel.Enabled = status;
-        UserNameTextBox.Enabled = PasswordTextBox.Enabled = status;
-    }
-
-    private void ConnectButton_Click(object sender, EventArgs e)
-    {
-        using SqlConnection connection = new SqlConnection(GenerateConnectionString());
+        _repository.UpdateConnectionString(GenerateConnectionString());
         string sqlQuery = "SELECT name FROM sys.databases";
-        connection.Open();
-        using SqlCommand command = new SqlCommand(sqlQuery, connection);
-        using var reader = command.ExecuteReader();
-        List<string> databases = new List<string>();
+
+        using var reader = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        List<string> databases = new List<string>() { "Choose..." };
 
         while (reader.Read())
             databases.Add($"{reader["name"]}");
@@ -37,6 +29,9 @@ public partial class MainForm : Form
         DatabasesGroupBox.Enabled = true;
         StatusToolStripLabel.ForeColor = Color.Green;
         StatusToolStripLabel.Text = "Connected";
+        await _repository.CloseConnection();
+    }
+    }
     private void AuthenticationComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
         bool status = ((ComboBox)sender).Text.Equals("SQL Server Authentication") ? true : false;
