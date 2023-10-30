@@ -1,14 +1,19 @@
+using DatabaseReader.Repositories;
 using Microsoft.Data.SqlClient;
 
 namespace DatabaseReader;
 
 public partial class MainForm : Form
 {
-    public MainForm() => InitializeComponent();
-
+    private readonly IRepository _repository;
+    public MainForm()
+    {
+        InitializeComponent();
+        AuthenticationComboBox.DataSource = new string[] { "Windows Authentication", "SQL Server Authentication" };
+        _repository = new Repository.Repository(GenerateConnectionString());
+    }
     private void MainForm_Load(object sender, EventArgs e)
     {
-        AuthenticationComboBox.DataSource = new string[] { "Windows Authentication", "SQL Server Authentication" };
         DatabasesGroupBox.Enabled = false;
         UserNameLabel.Enabled = PasswordLabel.Enabled = false;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = false;
