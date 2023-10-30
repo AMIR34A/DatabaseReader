@@ -37,6 +37,11 @@ public partial class MainForm : Form
         DatabasesGroupBox.Enabled = true;
         StatusToolStripLabel.ForeColor = Color.Green;
         StatusToolStripLabel.Text = "Connected";
+    private void AuthenticationComboBox_SelectedValueChanged(object sender, EventArgs e)
+    {
+        bool status = ((ComboBox)sender).Text.Equals("SQL Server Authentication") ? true : false;
+        UserNameLabel.Enabled = PasswordLabel.Enabled = status;
+        UserNameTextBox.Enabled = PasswordTextBox.Enabled = status;
     }
 
     private async void DatabasesComboBox_SelectedValueChanged(object sender, EventArgs e)
