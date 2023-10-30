@@ -41,7 +41,7 @@ public partial class MainForm : Form
 
     private string GenerateConnectionString()
     {
-        bool isIntegratedSecurity = AuthenticationComboBox.SelectedValue.Equals("Windows Authentication");
+        bool isIntegratedSecurity = AuthenticationComboBox.Text.Equals("Windows Authentication");
         SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
         sqlConnectionStringBuilder.DataSource = ServerNameTextBox.Text;
         sqlConnectionStringBuilder.IntegratedSecurity = isIntegratedSecurity;
