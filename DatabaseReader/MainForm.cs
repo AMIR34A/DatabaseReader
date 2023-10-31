@@ -12,6 +12,7 @@ public partial class MainForm : Form
         AuthenticationComboBox.DataSource = new string[] { "Windows Authentication", "SQL Server Authentication" };
         _repository = new Repository.Repository(GenerateConnectionString());
     }
+
     private void MainForm_Load(object sender, EventArgs e)
     {
         DatabasesGroupBox.Enabled = false;
@@ -22,6 +23,7 @@ public partial class MainForm : Form
     private async void ConnectButton_Click(object sender, EventArgs e)
     {
         _repository.UpdateConnectionString(GenerateConnectionString());
+        //int n = await _repository.GetCount("[BookShopDb].AppUsers");
         string sqlQuery = "SELECT name FROM sys.databases";
 
         using var reader = await _repository.ExecuteSQLCommandAsync(sqlQuery);
@@ -39,6 +41,12 @@ public partial class MainForm : Form
 
     private async void OpenButton_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(TabelsComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        {
+            MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         DataGridView dataGridView = new DataGridView()
         {
             ReadOnly = true,
@@ -98,6 +106,12 @@ public partial class MainForm : Form
             tabels.Add($"{reader[reader.GetName(0)]}.{reader[reader.GetName(1)]}");
         await _repository.CloseConnection();
         TabelsComboBox.DataSource = tabels;
+    }
+
+    private async void TabelsComboBox_SelectedValueChanged(object sender, EventArgs e)
+    {
+        int count = await _repository.GetCount($"{DatabasesComboBox.Text}.{TabelsComboBox.Text}");
+        CountRowsTextBox.Text = count.ToString();
     }
 
     private string GenerateConnectionString()
