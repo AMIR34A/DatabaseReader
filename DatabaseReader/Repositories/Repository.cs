@@ -19,10 +19,18 @@ public class Repository : IRepository
         return reader;
     }
 
+    public async Task<int> GetCount(string tabelName)
+    {
+        await _connection.OpenAsync();
+        using SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM {tabelName}", _connection);
+        int count = (int)await command.ExecuteScalarAsync();
+        await CloseConnection();
+        return count;
+    }
+
     public async Task CloseConnection() => await _connection.CloseAsync();
 
     public void UpdateConnectionString(string connectionString) => _connection.ConnectionString = connectionString;
-
 
     protected virtual void Dispose(bool disposing)
     {
