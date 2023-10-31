@@ -39,6 +39,8 @@
             AuthenticationLabel = new Label();
             ServerNameLabel = new Label();
             DatabasesGroupBox = new GroupBox();
+            CountRowsTextBox = new TextBox();
+            CountRowsLabel = new Label();
             label1 = new Label();
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
@@ -148,6 +150,8 @@
             // 
             // DatabasesGroupBox
             // 
+            DatabasesGroupBox.Controls.Add(CountRowsTextBox);
+            DatabasesGroupBox.Controls.Add(CountRowsLabel);
             DatabasesGroupBox.Controls.Add(label1);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TabelsComboBox);
@@ -158,6 +162,23 @@
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
+            // 
+            // CountRowsTextBox
+            // 
+            CountRowsTextBox.Location = new Point(124, 118);
+            CountRowsTextBox.Name = "CountRowsTextBox";
+            CountRowsTextBox.ReadOnly = true;
+            CountRowsTextBox.Size = new Size(153, 27);
+            CountRowsTextBox.TabIndex = 4;
+            // 
+            // CountRowsLabel
+            // 
+            CountRowsLabel.AutoSize = true;
+            CountRowsLabel.Location = new Point(6, 121);
+            CountRowsLabel.Name = "CountRowsLabel";
+            CountRowsLabel.Size = new Size(112, 20);
+            CountRowsLabel.TabIndex = 3;
+            CountRowsLabel.Text = "Count of Rows :";
             // 
             // label1
             // 
@@ -187,6 +208,7 @@
             TabelsComboBox.Name = "TabelsComboBox";
             TabelsComboBox.Size = new Size(463, 28);
             TabelsComboBox.TabIndex = 0;
+            TabelsComboBox.SelectedValueChanged += TabelsComboBox_SelectedValueChanged;
             // 
             // DatabasesComboBox
             // 
@@ -258,5 +280,7 @@
         private Button OpenButton;
         private Label label1;
         private ComboBox TabelsComboBox;
+        private Label CountRowsLabel;
+        private TextBox CountRowsTextBox;
     }
 }
