@@ -1,5 +1,6 @@
 ﻿using DatabaseReader.Repositories;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace DatabaseReader.Repository;
 
@@ -10,13 +11,16 @@ public class Repository : IRepository
 
     public Repository(string connectionString) => _connection = new SqlConnection(connectionString);
 
-    public async Task<SqlDataReader> ExecuteSQLCommandAsync(string query)
+    public async Task<DataTable> ExecuteSQLCommandAsync(string query) 
     {
-        await _connection.OpenAsync();
+        //await _connection.OpenAsync();
         using SqlCommand command = new SqlCommand(query, _connection);
-        var reader = await command.ExecuteReaderAsync();
-
-        return reader;
+        //var reader = await command.ExecuteReaderAsync();
+        await command.Connection.OpenAsync();
+        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        DataTable dataTable = new DataTable();
+        adapter.Fill(dataTable);
+        return dataTable;
     }
 
     public async Task<int> GetCount(string tabelName)
