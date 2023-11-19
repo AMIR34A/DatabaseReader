@@ -27,7 +27,7 @@ public class Repository : IRepository
         await _connection.OpenAsync();
         using SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM {tabelName}", _connection);
         int count = (int)await command.ExecuteScalarAsync();
-        await CloseConnection();
+        await _connection.CloseAsync();
         return count;
     }
 
