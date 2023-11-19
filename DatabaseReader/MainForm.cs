@@ -1,5 +1,6 @@
 using DatabaseReader.Repositories;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace DatabaseReader;
 
@@ -101,13 +102,12 @@ public partial class MainForm : Form
             return;
 
         string sqlQuery = $"SELECT TABLE_SCHEMA, TABLE_NAME FROM {DatabasesComboBox.Text}.INFORMATION_SCHEMA.TABLES";
-        using var reader = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+
+        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
         List<string> tabels = new List<string>();
-
-        while (reader.Read())
-            tabels.Add($"{reader[reader.GetName(0)]}.{reader[reader.GetName(1)]}");
-        await _repository.CloseConnection();
+        foreach (DataRow row in dataTable.Rows)
+            tabels.Add($"{row["TABLE_SCHEMA"]}.{row["TABLE_NAME"]}");
         TabelsComboBox.DataSource = tabels;
     }
 
