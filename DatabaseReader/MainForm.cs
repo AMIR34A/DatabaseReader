@@ -60,24 +60,23 @@ public partial class MainForm : Form
         };
 
         string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
-        var readerColums = await _repository.ExecuteSQLCommandAsync(sqlQuery);
-        while (readerColums.Read())
-            dataGridView.Columns.Add(readerColums[readerColums.GetName(0)].ToString(), readerColums[readerColums.GetName(0)].ToString());
+        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
-        await _repository.CloseConnection();
+        foreach (DataRow row in dataTable.Rows)
+            dataGridView.Columns.Add(row["Column_NAME"].ToString(), row["Column_NAME"].ToString());
 
         sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
-        var readerRows = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        using var data = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
-        while (readerRows.Read())
+        foreach (DataRow row in data.Rows)
         {
-            object[] row = new object[readerRows.FieldCount];
-            for (int i = 0; i < readerRows.FieldCount; i++)
-                row[i] = readerRows[readerRows.GetName(i)] != DBNull.Value ? readerRows[readerRows.GetName(i)] : "-";
+            object[] objects = new object[row.ItemArray.Length];
 
-            dataGridView.Rows.Add(row);
+            for (int i = 0; i < row.ItemArray.Length; i++)
+                objects[i] = row.ItemArray[i] != DBNull.Value ? row.ItemArray[i] : "-";
+
+            dataGridView.Rows.Add(objects);
         }
-        await _repository.CloseConnection();
 
         Form databaseShowForm = new Form()
         {
