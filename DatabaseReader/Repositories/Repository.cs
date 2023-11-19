@@ -31,8 +31,6 @@ public class Repository : IRepository
         return count;
     }
 
-    public async Task CloseConnection() => await _connection.CloseAsync();
-
     public void UpdateConnectionString(string connectionString) => _connection.ConnectionString = connectionString;
 
     protected virtual void Dispose(bool disposing)
