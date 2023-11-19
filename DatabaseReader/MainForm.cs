@@ -22,21 +22,25 @@ public partial class MainForm : Form
 
     private async void ConnectButton_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(ServerNameTextBox.Text))
+        {
+            MessageBox.Show("Please enter server name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         _repository.UpdateConnectionString(GenerateConnectionString());
-        //int n = await _repository.GetCount("[BookShopDb].AppUsers");
         string sqlQuery = "SELECT name FROM sys.databases";
 
-        using var reader = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
         List<string> databases = new List<string>() { "Choose..." };
 
-        while (reader.Read())
-            databases.Add($"{reader["name"]}");
+        foreach (DataRow row in dataTable.Rows)
+            databases.Add(row["name"].ToString());
 
         DatabasesComboBox.DataSource = databases;
         DatabasesGroupBox.Enabled = true;
         StatusToolStripLabel.ForeColor = Color.Green;
         StatusToolStripLabel.Text = "Connected";
-        await _repository.CloseConnection();
     }
 
     private async void OpenButton_Click(object sender, EventArgs e)
