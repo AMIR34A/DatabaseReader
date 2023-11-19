@@ -13,13 +13,12 @@ public class Repository : IRepository
 
     public async Task<DataTable> ExecuteSQLCommandAsync(string query) 
     {
-        //await _connection.OpenAsync();
         using SqlCommand command = new SqlCommand(query, _connection);
-        //var reader = await command.ExecuteReaderAsync();
         await command.Connection.OpenAsync();
         SqlDataAdapter adapter = new SqlDataAdapter(command);
         DataTable dataTable = new DataTable();
         adapter.Fill(dataTable);
+        await _connection.CloseAsync();
         return dataTable;
     }
 
