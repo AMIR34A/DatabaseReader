@@ -248,7 +248,7 @@
             ExportToExcelButton.TabIndex = 1;
             ExportToExcelButton.Text = "Export to Excel";
             ExportToExcelButton.UseVisualStyleBackColor = true;
-            ExportToExcelButton.Click += OpenButton_Click;
+            ExportToExcelButton.Click += ExportToExcelButton_Click;
             // 
             // MainForm
             // 
