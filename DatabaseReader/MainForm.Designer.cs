@@ -242,11 +242,11 @@
             // 
             // ExportToExcelButton
             // 
-            ExportToExcelButton.Location = new Point(320, 121);
+            ExportToExcelButton.Location = new Point(316, 121);
             ExportToExcelButton.Name = "ExportToExcelButton";
-            ExportToExcelButton.Size = new Size(112, 29);
+            ExportToExcelButton.Size = new Size(116, 29);
             ExportToExcelButton.TabIndex = 1;
-            ExportToExcelButton.Text = "Expot to Excel";
+            ExportToExcelButton.Text = "Export to Excel";
             ExportToExcelButton.UseVisualStyleBackColor = true;
             ExportToExcelButton.Click += OpenButton_Click;
             // 
