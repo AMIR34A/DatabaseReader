@@ -47,6 +47,7 @@
             DatabasesComboBox = new ComboBox();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
+            ExportToExcelButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -153,6 +154,7 @@
             DatabasesGroupBox.Controls.Add(CountRowsTextBox);
             DatabasesGroupBox.Controls.Add(CountRowsLabel);
             DatabasesGroupBox.Controls.Add(label1);
+            DatabasesGroupBox.Controls.Add(ExportToExcelButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TabelsComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
@@ -238,6 +240,16 @@
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
             // 
+            // ExportToExcelButton
+            // 
+            ExportToExcelButton.Location = new Point(320, 121);
+            ExportToExcelButton.Name = "ExportToExcelButton";
+            ExportToExcelButton.Size = new Size(112, 29);
+            ExportToExcelButton.TabIndex = 1;
+            ExportToExcelButton.Text = "Expot to Excel";
+            ExportToExcelButton.UseVisualStyleBackColor = true;
+            ExportToExcelButton.Click += OpenButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -282,5 +294,6 @@
         private ComboBox TabelsComboBox;
         private Label CountRowsLabel;
         private TextBox CountRowsTextBox;
+        private Button ExportToExcelButton;
     }
 }
