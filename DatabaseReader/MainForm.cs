@@ -134,6 +134,7 @@ public partial class MainForm : Form
 
     private void ExportToExcelButton_Click(object sender, EventArgs e)
     {
-        
+        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        folderBrowserDialog.ShowDialog();
     }
 }
