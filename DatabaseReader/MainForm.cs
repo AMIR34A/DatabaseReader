@@ -154,6 +154,12 @@ public partial class MainForm : Form
 
         for (i = 2; i < rows.Count + 2; i++)
     {
+            char character = 'A';
+            for (int j = 0; j < rows[i - 2].ItemArray.Length; j++, character++)
+                workSheet[$"{character}{i}"].Value = rows[i - 2].ItemArray[j] != DBNull.Value ? rows[i - 2].ItemArray[j] : "-";
+        }
+
+
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
         folderBrowserDialog.ShowDialog();
     }
