@@ -165,4 +165,13 @@ public partial class MainForm : Form
         workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TabelsComboBox.Text}.xlsx");
         MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
+
+    {
+        string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
+        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+
+        sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
+        using var data = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        return (dataTable, data);
+    }
 }
