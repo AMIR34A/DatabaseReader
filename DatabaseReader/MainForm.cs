@@ -162,5 +162,7 @@ public partial class MainForm : Form
 
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
         folderBrowserDialog.ShowDialog();
+        workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TabelsComboBox.Text}.xlsx");
+        MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }
