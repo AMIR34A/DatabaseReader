@@ -60,16 +60,11 @@ public partial class MainForm : Form
             Dock = DockStyle.Fill,
         };
 
-        string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
-        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
-
-        foreach (DataRow row in dataTable.Rows)
+        var tableData = await GetTableData();
+        foreach (DataRow row in tableData.Item1.Rows)
             dataGridView.Columns.Add(row["Column_NAME"].ToString(), row["Column_NAME"].ToString());
 
-        sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
-        using var data = await _repository.ExecuteSQLCommandAsync(sqlQuery);
-
-        foreach (DataRow row in data.Rows)
+        foreach (DataRow row in tableData.Item2.Rows)
         {
             object[] objects = new object[row.ItemArray.Length];
 
