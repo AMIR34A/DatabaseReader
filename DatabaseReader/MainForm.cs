@@ -132,7 +132,27 @@ public partial class MainForm : Form
         return sqlConnectionStringBuilder.ConnectionString;
     }
 
-    private void ExportToExcelButton_Click(object sender, EventArgs e)
+    private async void ExportToExcelButton_Click(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(TabelsComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        {
+            MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        WorkBook workBook = WorkBook.Create(ExcelFileFormat.XLSX);
+        var workSheet = workBook.CreateWorkSheet(TabelsComboBox.Text);
+
+        var tableData = await GetTableData();
+        var tableInfo = tableData.Item1.Rows;
+        var rows = tableData.Item2.Rows;
+        //foreach (DataRow row in tableData.Item1.Rows)
+
+        int i = 0;
+        for (char character = 'A'; i < tableInfo.Count && character <= 'Z'; character++, i++)
+            workSheet[$"{character}1"].Value = tableInfo[i].ItemArray[0].ToString();
+
+        for (i = 2; i < rows.Count + 2; i++)
     {
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
         folderBrowserDialog.ShowDialog();
