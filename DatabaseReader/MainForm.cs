@@ -1,6 +1,8 @@
 using DatabaseReader.Repositories;
+using IronXL;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
 
@@ -141,19 +143,17 @@ public partial class MainForm : Form
         var tableData = await GetTableData();
         var tableInfo = tableData.Item1.Rows;
         var rows = tableData.Item2.Rows;
-        //foreach (DataRow row in tableData.Item1.Rows)
 
         int i = 0;
         for (char character = 'A'; i < tableInfo.Count && character <= 'Z'; character++, i++)
             workSheet[$"{character}1"].Value = tableInfo[i].ItemArray[0].ToString();
 
         for (i = 2; i < rows.Count + 2; i++)
-    {
+        {
             char character = 'A';
             for (int j = 0; j < rows[i - 2].ItemArray.Length; j++, character++)
                 workSheet[$"{character}{i}"].Value = rows[i - 2].ItemArray[j] != DBNull.Value ? rows[i - 2].ItemArray[j] : "-";
         }
-
 
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
         folderBrowserDialog.ShowDialog();
@@ -161,6 +161,7 @@ public partial class MainForm : Form
         MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
+    private async Task<(DataTable, DataTable)> GetTableData()
     {
         string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
         using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
