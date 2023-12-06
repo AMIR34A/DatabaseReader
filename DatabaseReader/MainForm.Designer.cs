@@ -1,4 +1,8 @@
-﻿namespace DatabaseReader
+﻿using Point = System.Drawing.Point;
+using Size = System.Drawing.Size;
+using SizeF = System.Drawing.SizeF;
+
+namespace DatabaseReader
 {
     partial class MainForm
     {
@@ -88,7 +92,7 @@
             AuthenticationComboBox.FormattingEnabled = true;
             AuthenticationComboBox.Location = new Point(127, 70);
             AuthenticationComboBox.Name = "AuthenticationComboBox";
-            AuthenticationComboBox.Size = new Size(405, 28);
+            AuthenticationComboBox.Size = new System.Drawing.Size(405, 28);
             AuthenticationComboBox.TabIndex = 2;
             AuthenticationComboBox.SelectedValueChanged += AuthenticationComboBox_SelectedValueChanged;
             // 
@@ -235,7 +239,7 @@
             // 
             // StatusToolStripLabel
             // 
-            StatusToolStripLabel.ForeColor = Color.Red;
+            StatusToolStripLabel.ForeColor = System.Drawing.Color.Red;
             StatusToolStripLabel.Name = "StatusToolStripLabel";
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
