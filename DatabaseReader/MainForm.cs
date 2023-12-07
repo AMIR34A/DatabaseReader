@@ -102,13 +102,13 @@ public partial class MainForm : Form
 
         using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
-        List<string> tabels = new List<string>();
+        List<string> tables = new List<string>();
         foreach (DataRow row in dataTable.Rows)
-            tabels.Add($"{row["TABLE_SCHEMA"]}.{row["TABLE_NAME"]}");
-        TabelsComboBox.DataSource = tabels;
+            tables.Add($"{row["TABLE_SCHEMA"]}.{row["TABLE_NAME"]}");
+        TabelsComboBox.DataSource = tables;
     }
 
-    private async void TabelsComboBox_SelectedValueChanged(object sender, EventArgs e)
+    private async void TablesComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
         int count = await _repository.GetCount($"{DatabasesComboBox.Text}.{TabelsComboBox.Text}");
         CountRowsTextBox.Text = count.ToString();

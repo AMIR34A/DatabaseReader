@@ -214,7 +214,7 @@ namespace DatabaseReader
             TabelsComboBox.Name = "TabelsComboBox";
             TabelsComboBox.Size = new Size(463, 28);
             TabelsComboBox.TabIndex = 0;
-            TabelsComboBox.SelectedValueChanged += TabelsComboBox_SelectedValueChanged;
+            TabelsComboBox.SelectedValueChanged += TablesComboBox_SelectedValueChanged;
             // 
             // DatabasesComboBox
             // 
