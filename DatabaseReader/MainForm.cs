@@ -155,10 +155,16 @@ public partial class MainForm : Form
                 workSheet[$"{character}{i}"].Value = rows[i - 2].ItemArray[j] != DBNull.Value ? rows[i - 2].ItemArray[j] : "-";
         }
 
-        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog()
+        {
+            SelectedPath = "C:\\Desktop"
+        };
         folderBrowserDialog.ShowDialog();
-        workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TabelsComboBox.Text}.xlsx");
-        MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
+        {
+            workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TabelsComboBox.Text}.xlsx");
+            MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 
     private async Task<(DataTable, DataTable)> GetTableData()
