@@ -46,12 +46,13 @@ namespace DatabaseReader
             CountRowsTextBox = new TextBox();
             CountRowsLabel = new Label();
             label1 = new Label();
+            ExportToExcelButton = new Button();
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
-            ExportToExcelButton = new Button();
+            DeleteButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -92,7 +93,7 @@ namespace DatabaseReader
             AuthenticationComboBox.FormattingEnabled = true;
             AuthenticationComboBox.Location = new Point(127, 70);
             AuthenticationComboBox.Name = "AuthenticationComboBox";
-            AuthenticationComboBox.Size = new System.Drawing.Size(405, 28);
+            AuthenticationComboBox.Size = new Size(405, 28);
             AuthenticationComboBox.TabIndex = 2;
             AuthenticationComboBox.SelectedValueChanged += AuthenticationComboBox_SelectedValueChanged;
             // 
@@ -159,12 +160,13 @@ namespace DatabaseReader
             DatabasesGroupBox.Controls.Add(CountRowsLabel);
             DatabasesGroupBox.Controls.Add(label1);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
+            DatabasesGroupBox.Controls.Add(DeleteButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TabelsComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
             DatabasesGroupBox.Location = new Point(12, 246);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
-            DatabasesGroupBox.Size = new Size(537, 160);
+            DatabasesGroupBox.Size = new Size(537, 196);
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
@@ -194,6 +196,16 @@ namespace DatabaseReader
             label1.Size = new Size(57, 20);
             label1.TabIndex = 2;
             label1.Text = "Tabels :";
+            // 
+            // ExportToExcelButton
+            // 
+            ExportToExcelButton.Location = new Point(316, 121);
+            ExportToExcelButton.Name = "ExportToExcelButton";
+            ExportToExcelButton.Size = new Size(116, 29);
+            ExportToExcelButton.TabIndex = 1;
+            ExportToExcelButton.Text = "Export to Excel";
+            ExportToExcelButton.UseVisualStyleBackColor = true;
+            ExportToExcelButton.Click += ExportToExcelButton_Click;
             // 
             // OpenButton
             // 
@@ -231,7 +243,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 418);
+            StatusStrip.Location = new Point(0, 445);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -244,21 +256,21 @@ namespace DatabaseReader
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
             // 
-            // ExportToExcelButton
+            // DeleteButton
             // 
-            ExportToExcelButton.Location = new Point(316, 121);
-            ExportToExcelButton.Name = "ExportToExcelButton";
-            ExportToExcelButton.Size = new Size(116, 29);
-            ExportToExcelButton.TabIndex = 1;
-            ExportToExcelButton.Text = "Export to Excel";
-            ExportToExcelButton.UseVisualStyleBackColor = true;
-            ExportToExcelButton.Click += ExportToExcelButton_Click;
+            DeleteButton.Location = new Point(438, 161);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(94, 29);
+            DeleteButton.TabIndex = 1;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += OpenButton_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 444);
+            ClientSize = new Size(561, 471);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
@@ -299,5 +311,6 @@ namespace DatabaseReader
         private Label CountRowsLabel;
         private TextBox CountRowsTextBox;
         private Button ExportToExcelButton;
+        private Button DeleteButton;
     }
 }
