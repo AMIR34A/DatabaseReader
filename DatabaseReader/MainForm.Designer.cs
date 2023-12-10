@@ -44,18 +44,20 @@ namespace DatabaseReader
             ServerNameLabel = new Label();
             DatabasesGroupBox = new GroupBox();
             CountRowsTextBox = new TextBox();
-            CountRowsLabel = new Label();
+            IdLabel = new Label();
             label1 = new Label();
             ExportToExcelButton = new Button();
+            DeleteButton = new Button();
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
-            DeleteButton = new Button();
+            OperationGroupBox = new GroupBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
+            OperationGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // ConnectServerGroupBox
@@ -156,37 +158,34 @@ namespace DatabaseReader
             // 
             // DatabasesGroupBox
             // 
-            DatabasesGroupBox.Controls.Add(CountRowsTextBox);
-            DatabasesGroupBox.Controls.Add(CountRowsLabel);
             DatabasesGroupBox.Controls.Add(label1);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
-            DatabasesGroupBox.Controls.Add(DeleteButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TabelsComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
             DatabasesGroupBox.Location = new Point(12, 246);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
-            DatabasesGroupBox.Size = new Size(537, 196);
+            DatabasesGroupBox.Size = new Size(537, 163);
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
             // 
             // CountRowsTextBox
             // 
-            CountRowsTextBox.Location = new Point(124, 118);
+            CountRowsTextBox.Location = new Point(41, 26);
             CountRowsTextBox.Name = "CountRowsTextBox";
             CountRowsTextBox.ReadOnly = true;
-            CountRowsTextBox.Size = new Size(153, 27);
+            CountRowsTextBox.Size = new Size(95, 27);
             CountRowsTextBox.TabIndex = 4;
             // 
-            // CountRowsLabel
+            // IdLabel
             // 
-            CountRowsLabel.AutoSize = true;
-            CountRowsLabel.Location = new Point(6, 121);
-            CountRowsLabel.Name = "CountRowsLabel";
-            CountRowsLabel.Size = new Size(112, 20);
-            CountRowsLabel.TabIndex = 3;
-            CountRowsLabel.Text = "Count of Rows :";
+            IdLabel.AutoSize = true;
+            IdLabel.Location = new Point(6, 29);
+            IdLabel.Name = "IdLabel";
+            IdLabel.Size = new Size(29, 20);
+            IdLabel.TabIndex = 3;
+            IdLabel.Text = "Id :";
             // 
             // label1
             // 
@@ -206,6 +205,16 @@ namespace DatabaseReader
             ExportToExcelButton.Text = "Export to Excel";
             ExportToExcelButton.UseVisualStyleBackColor = true;
             ExportToExcelButton.Click += ExportToExcelButton_Click;
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.Location = new Point(438, 20);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(94, 29);
+            DeleteButton.TabIndex = 1;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += OpenButton_Click;
             // 
             // OpenButton
             // 
@@ -243,7 +252,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 445);
+            StatusStrip.Location = new Point(0, 510);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -256,21 +265,24 @@ namespace DatabaseReader
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
             // 
-            // DeleteButton
+            // OperationGroupBox
             // 
-            DeleteButton.Location = new Point(438, 161);
-            DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(94, 29);
-            DeleteButton.TabIndex = 1;
-            DeleteButton.Text = "Delete";
-            DeleteButton.UseVisualStyleBackColor = true;
-            DeleteButton.Click += OpenButton_Click;
+            OperationGroupBox.Controls.Add(CountRowsTextBox);
+            OperationGroupBox.Controls.Add(IdLabel);
+            OperationGroupBox.Controls.Add(DeleteButton);
+            OperationGroupBox.Location = new Point(12, 415);
+            OperationGroupBox.Name = "OperationGroupBox";
+            OperationGroupBox.Size = new Size(537, 80);
+            OperationGroupBox.TabIndex = 3;
+            OperationGroupBox.TabStop = false;
+            OperationGroupBox.Text = "Operation";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 471);
+            ClientSize = new Size(561, 536);
+            Controls.Add(OperationGroupBox);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
@@ -285,6 +297,8 @@ namespace DatabaseReader
             DatabasesGroupBox.PerformLayout();
             StatusStrip.ResumeLayout(false);
             StatusStrip.PerformLayout();
+            OperationGroupBox.ResumeLayout(false);
+            OperationGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,9 +322,10 @@ namespace DatabaseReader
         private Button OpenButton;
         private Label label1;
         private ComboBox TabelsComboBox;
-        private Label CountRowsLabel;
+        private Label IdLabel;
         private TextBox CountRowsTextBox;
         private Button ExportToExcelButton;
         private Button DeleteButton;
+        private GroupBox OperationGroupBox;
     }
 }
