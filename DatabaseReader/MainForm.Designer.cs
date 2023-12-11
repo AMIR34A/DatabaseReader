@@ -43,14 +43,14 @@ namespace DatabaseReader
             AuthenticationLabel = new Label();
             ServerNameLabel = new Label();
             DatabasesGroupBox = new GroupBox();
-            CountRowsTextBox = new TextBox();
-            IdLabel = new Label();
             label1 = new Label();
             ExportToExcelButton = new Button();
-            DeleteButton = new Button();
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
+            CountRowsTextBox = new TextBox();
+            IdLabel = new Label();
+            DeleteButton = new Button();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
             OperationGroupBox = new GroupBox();
@@ -170,23 +170,6 @@ namespace DatabaseReader
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
             // 
-            // CountRowsTextBox
-            // 
-            CountRowsTextBox.Location = new Point(41, 26);
-            CountRowsTextBox.Name = "CountRowsTextBox";
-            CountRowsTextBox.ReadOnly = true;
-            CountRowsTextBox.Size = new Size(95, 27);
-            CountRowsTextBox.TabIndex = 4;
-            // 
-            // IdLabel
-            // 
-            IdLabel.AutoSize = true;
-            IdLabel.Location = new Point(6, 29);
-            IdLabel.Name = "IdLabel";
-            IdLabel.Size = new Size(29, 20);
-            IdLabel.TabIndex = 3;
-            IdLabel.Text = "Id :";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -205,16 +188,6 @@ namespace DatabaseReader
             ExportToExcelButton.Text = "Export to Excel";
             ExportToExcelButton.UseVisualStyleBackColor = true;
             ExportToExcelButton.Click += ExportToExcelButton_Click;
-            // 
-            // DeleteButton
-            // 
-            DeleteButton.Location = new Point(438, 20);
-            DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(94, 29);
-            DeleteButton.TabIndex = 1;
-            DeleteButton.Text = "Delete";
-            DeleteButton.UseVisualStyleBackColor = true;
-            DeleteButton.Click += OpenButton_Click;
             // 
             // OpenButton
             // 
@@ -247,6 +220,33 @@ namespace DatabaseReader
             DatabasesComboBox.Size = new Size(526, 28);
             DatabasesComboBox.TabIndex = 0;
             DatabasesComboBox.SelectedValueChanged += DatabasesComboBox_SelectedValueChanged;
+            // 
+            // CountRowsTextBox
+            // 
+            CountRowsTextBox.Location = new Point(41, 26);
+            CountRowsTextBox.Name = "CountRowsTextBox";
+            CountRowsTextBox.ReadOnly = true;
+            CountRowsTextBox.Size = new Size(95, 27);
+            CountRowsTextBox.TabIndex = 4;
+            // 
+            // IdLabel
+            // 
+            IdLabel.AutoSize = true;
+            IdLabel.Location = new Point(6, 29);
+            IdLabel.Name = "IdLabel";
+            IdLabel.Size = new Size(29, 20);
+            IdLabel.TabIndex = 3;
+            IdLabel.Text = "Id :";
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.Location = new Point(438, 24);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(94, 29);
+            DeleteButton.TabIndex = 1;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += OpenButton_Click;
             // 
             // StatusStrip
             // 
