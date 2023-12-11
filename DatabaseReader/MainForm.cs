@@ -176,4 +176,9 @@ public partial class MainForm : Form
         using var data = await _repository.ExecuteSQLCommandAsync(sqlQuery);
         return (dataTable, data);
     }
+
+    private void DeleteButton_Click(object sender, EventArgs e)
+    {
+
+    }
 }

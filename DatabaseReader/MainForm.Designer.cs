@@ -245,7 +245,7 @@ namespace DatabaseReader
             DeleteButton.TabIndex = 1;
             DeleteButton.Text = "Delete";
             DeleteButton.UseVisualStyleBackColor = true;
-            DeleteButton.Click += OpenButton_Click;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // StatusStrip
             // 
