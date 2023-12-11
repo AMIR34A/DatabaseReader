@@ -111,7 +111,7 @@ public partial class MainForm : Form
     private async void TablesComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
         int count = await _repository.GetCount($"{DatabasesComboBox.Text}.{TabelsComboBox.Text}");
-        CountRowsTextBox.Text = count.ToString();
+        IdTextBox.Text = count.ToString();
     }
 
     private string GenerateConnectionString()

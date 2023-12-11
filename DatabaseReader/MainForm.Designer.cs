@@ -48,7 +48,7 @@ namespace DatabaseReader
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
-            CountRowsTextBox = new TextBox();
+            IdTextBox = new TextBox();
             IdLabel = new Label();
             DeleteButton = new Button();
             StatusStrip = new StatusStrip();
@@ -221,13 +221,12 @@ namespace DatabaseReader
             DatabasesComboBox.TabIndex = 0;
             DatabasesComboBox.SelectedValueChanged += DatabasesComboBox_SelectedValueChanged;
             // 
-            // CountRowsTextBox
+            // IdTextBox
             // 
-            CountRowsTextBox.Location = new Point(41, 26);
-            CountRowsTextBox.Name = "CountRowsTextBox";
-            CountRowsTextBox.ReadOnly = true;
-            CountRowsTextBox.Size = new Size(95, 27);
-            CountRowsTextBox.TabIndex = 4;
+            IdTextBox.Location = new Point(41, 26);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(95, 27);
+            IdTextBox.TabIndex = 4;
             // 
             // IdLabel
             // 
@@ -252,7 +251,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 510);
+            StatusStrip.Location = new Point(0, 499);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -267,12 +266,12 @@ namespace DatabaseReader
             // 
             // OperationGroupBox
             // 
-            OperationGroupBox.Controls.Add(CountRowsTextBox);
+            OperationGroupBox.Controls.Add(IdTextBox);
             OperationGroupBox.Controls.Add(IdLabel);
             OperationGroupBox.Controls.Add(DeleteButton);
             OperationGroupBox.Location = new Point(12, 415);
             OperationGroupBox.Name = "OperationGroupBox";
-            OperationGroupBox.Size = new Size(537, 80);
+            OperationGroupBox.Size = new Size(537, 69);
             OperationGroupBox.TabIndex = 3;
             OperationGroupBox.TabStop = false;
             OperationGroupBox.Text = "Operation";
@@ -281,7 +280,7 @@ namespace DatabaseReader
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 536);
+            ClientSize = new Size(561, 525);
             Controls.Add(OperationGroupBox);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
@@ -323,7 +322,7 @@ namespace DatabaseReader
         private Label label1;
         private ComboBox TabelsComboBox;
         private Label IdLabel;
-        private TextBox CountRowsTextBox;
+        private TextBox IdTextBox;
         private Button ExportToExcelButton;
         private Button DeleteButton;
         private GroupBox OperationGroupBox;
