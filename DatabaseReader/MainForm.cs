@@ -179,6 +179,10 @@ public partial class MainForm : Form
 
     private void DeleteButton_Click(object sender, EventArgs e)
     {
-
+        if (string.IsNullOrEmpty(IdTextBox.Text))
+        {
+            MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
     }
 }
