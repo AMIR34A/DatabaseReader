@@ -31,6 +31,14 @@ public class Repository : IRepository
         return count;
     }
 
+    public async Task<bool> DeleteAsync(string tableName,string id)
+    {
+        await _connection.OpenAsync();
+        using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE Id = '{id}'", _connection);
+        int result = await command.ExecuteNonQueryAsync();
+        return result > 0;
+    }
+
     public void UpdateConnectionString(string connectionString) => _connection.ConnectionString = connectionString;
 
     protected virtual void Dispose(bool disposing)
