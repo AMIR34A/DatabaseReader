@@ -22,7 +22,7 @@ public class Repository : IRepository
         return dataTable;
     }
 
-    public async Task<int> GetCount(string tableName)
+    public async Task<int> GetCountAsync(string tableName)
     {
         await _connection.OpenAsync();
         using SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM {tableName}", _connection);
