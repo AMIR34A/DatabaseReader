@@ -177,12 +177,17 @@ public partial class MainForm : Form
         return (dataTable, data);
     }
 
-    private void DeleteButton_Click(object sender, EventArgs e)
+    private async void DeleteButton_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(IdTextBox.Text))
         {
             MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+
+        var result = await _repository.DeleteAsync(TabelsComboBox.Text, IdTextBox.Text);
+        if(result)
+            MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
     }
 }
