@@ -188,6 +188,7 @@ public partial class MainForm : Form
         var result = await _repository.DeleteAsync(TabelsComboBox.Text, IdTextBox.Text);
         if(result)
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+        else
+            MessageBox.Show("Something went wrong", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }
