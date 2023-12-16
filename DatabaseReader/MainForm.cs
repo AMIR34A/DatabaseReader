@@ -2,6 +2,7 @@ using DatabaseReader.Repositories;
 using IronXL;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -48,7 +49,7 @@ public partial class MainForm : Form
 
     private async void OpenButton_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(TabelsComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        if (string.IsNullOrEmpty(TablesComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
         {
             MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
@@ -178,7 +179,7 @@ public partial class MainForm : Form
         string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TablesComboBox.Text.Split('.')[1]}'";
         using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
-        sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
+        sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TablesComboBox.SelectedValue}";
         using var data = await _repository.ExecuteSQLCommandAsync(sqlQuery);
         return (dataTable, data);
     }
