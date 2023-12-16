@@ -31,10 +31,10 @@ public class Repository : IRepository
         return count;
     }
 
-    public async Task<bool> DeleteAsync(string tableName,string id)
+    public async Task<bool> DeleteAsync(string tableName,string deleteBy,string value)
     {
         await _connection.OpenAsync();
-        using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE Id = '{id}'", _connection);
+        using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE [{deleteBy}] = '{value}'", _connection);
         int result = await command.ExecuteNonQueryAsync();
         return result > 0;
     }
