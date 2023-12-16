@@ -105,7 +105,7 @@ public partial class MainForm : Form
         List<string> tables = new List<string>();
         foreach (DataRow row in dataTable.Rows)
             tables.Add($"{row["TABLE_SCHEMA"]}.{row["TABLE_NAME"]}");
-        TabelsComboBox.DataSource = tables;
+        TablesComboBox.DataSource = tables;
     }
 
     private async void TablesComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -131,14 +131,14 @@ public partial class MainForm : Form
 
     private async void ExportToExcelButton_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(TabelsComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        if (string.IsNullOrEmpty(TablesComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
         {
             MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         WorkBook workBook = WorkBook.Create(ExcelFileFormat.XLSX);
-        var workSheet = workBook.CreateWorkSheet(TabelsComboBox.Text);
+        var workSheet = workBook.CreateWorkSheet(TablesComboBox.Text);
 
         var tableData = await GetTableData();
         var tableInfo = tableData.Item1.Rows;
@@ -162,14 +162,14 @@ public partial class MainForm : Form
         folderBrowserDialog.ShowDialog();
         if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
         {
-            workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TabelsComboBox.Text}.xlsx");
+            workBook.SaveAs($"{folderBrowserDialog.SelectedPath}\\{TablesComboBox.Text}.xlsx");
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
     private async Task<(DataTable, DataTable)> GetTableData()
     {
-        string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TabelsComboBox.Text.Split('.')[1]}'";
+        string sqlQuery = $"select Column_NAME from {DatabasesComboBox.Text}.INFORMATION_SCHEMA.Columns where TABLE_NAME = '{TablesComboBox.Text.Split('.')[1]}'";
         using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
 
         sqlQuery = $"SELECT * FROM [{DatabasesComboBox.SelectedValue}].{TabelsComboBox.SelectedValue}";
