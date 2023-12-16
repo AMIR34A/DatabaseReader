@@ -185,14 +185,14 @@ public partial class MainForm : Form
 
     private async void DeleteButton_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(IdTextBox.Text))
+        if (string.IsNullOrEmpty(CountOfRowsTextBox.Text))
         {
             MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
-        var result = await _repository.DeleteAsync(TabelsComboBox.Text, IdTextBox.Text);
-        if(result)
+        var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}",DeleteByComboBox.Text, ValueTextBox.Text);
+        if (result)
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
         else
             MessageBox.Show("Something went wrong", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
