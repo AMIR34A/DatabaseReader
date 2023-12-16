@@ -45,19 +45,19 @@ namespace DatabaseReader
             DatabasesGroupBox = new GroupBox();
             CountOfRowsLabel = new Label();
             CountOfRowsTextBox = new TextBox();
-            label1 = new Label();
+            TableLabel = new Label();
             ExportToExcelButton = new Button();
             OpenButton = new Button();
-            TabelsComboBox = new ComboBox();
+            TablesComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
             DeleteButton = new Button();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
             OperationGroupBox = new GroupBox();
-            Idlabel = new Label();
-            DeleteByComboBox = new ComboBox();
             ValueLabel = new Label();
+            Idlabel = new Label();
             ValueTextBox = new TextBox();
+            DeleteByComboBox = new ComboBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -164,10 +164,10 @@ namespace DatabaseReader
             // 
             DatabasesGroupBox.Controls.Add(CountOfRowsLabel);
             DatabasesGroupBox.Controls.Add(CountOfRowsTextBox);
-            DatabasesGroupBox.Controls.Add(label1);
+            DatabasesGroupBox.Controls.Add(TableLabel);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
-            DatabasesGroupBox.Controls.Add(TabelsComboBox);
+            DatabasesGroupBox.Controls.Add(TablesComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
             DatabasesGroupBox.Location = new Point(12, 246);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
@@ -193,14 +193,14 @@ namespace DatabaseReader
             CountOfRowsTextBox.Size = new Size(95, 27);
             CountOfRowsTextBox.TabIndex = 4;
             // 
-            // label1
+            // TableLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 80);
-            label1.Name = "label1";
-            label1.Size = new Size(57, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Tabels :";
+            TableLabel.AutoSize = true;
+            TableLabel.Location = new Point(6, 80);
+            TableLabel.Name = "TableLabel";
+            TableLabel.Size = new Size(57, 20);
+            TableLabel.TabIndex = 2;
+            TableLabel.Text = "Tables :";
             // 
             // ExportToExcelButton
             // 
@@ -222,16 +222,16 @@ namespace DatabaseReader
             OpenButton.UseVisualStyleBackColor = true;
             OpenButton.Click += OpenButton_Click;
             // 
-            // TabelsComboBox
+            // TablesComboBox
             // 
-            TabelsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            TabelsComboBox.FlatStyle = FlatStyle.Popup;
-            TabelsComboBox.FormattingEnabled = true;
-            TabelsComboBox.Location = new Point(69, 77);
-            TabelsComboBox.Name = "TabelsComboBox";
-            TabelsComboBox.Size = new Size(463, 28);
-            TabelsComboBox.TabIndex = 0;
-            TabelsComboBox.SelectedValueChanged += TablesComboBox_SelectedValueChanged;
+            TablesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TablesComboBox.FlatStyle = FlatStyle.Popup;
+            TablesComboBox.FormattingEnabled = true;
+            TablesComboBox.Location = new Point(69, 77);
+            TablesComboBox.Name = "TablesComboBox";
+            TablesComboBox.Size = new Size(463, 28);
+            TablesComboBox.TabIndex = 0;
+            TablesComboBox.SelectedValueChanged += TablesComboBox_SelectedValueChanged;
             // 
             // DatabasesComboBox
             // 
@@ -286,6 +286,15 @@ namespace DatabaseReader
             OperationGroupBox.TabStop = false;
             OperationGroupBox.Text = "Operation";
             // 
+            // ValueLabel
+            // 
+            ValueLabel.AutoSize = true;
+            ValueLabel.Location = new Point(237, 33);
+            ValueLabel.Name = "ValueLabel";
+            ValueLabel.Size = new Size(52, 20);
+            ValueLabel.TabIndex = 3;
+            ValueLabel.Text = "Value :";
+            // 
             // Idlabel
             // 
             Idlabel.AutoSize = true;
@@ -294,6 +303,13 @@ namespace DatabaseReader
             Idlabel.Size = new Size(80, 20);
             Idlabel.TabIndex = 3;
             Idlabel.Text = "Delete by :";
+            // 
+            // ValueTextBox
+            // 
+            ValueTextBox.Location = new Point(295, 30);
+            ValueTextBox.Name = "ValueTextBox";
+            ValueTextBox.Size = new Size(120, 27);
+            ValueTextBox.TabIndex = 4;
             // 
             // DeleteByComboBox
             // 
@@ -304,22 +320,6 @@ namespace DatabaseReader
             DeleteByComboBox.Name = "DeleteByComboBox";
             DeleteByComboBox.Size = new Size(139, 28);
             DeleteByComboBox.TabIndex = 0;
-            // 
-            // ValueLabel
-            // 
-            ValueLabel.AutoSize = true;
-            ValueLabel.Location = new Point(237, 33);
-            ValueLabel.Name = "ValueLabel";
-            ValueLabel.Size = new Size(52, 20);
-            ValueLabel.TabIndex = 3;
-            ValueLabel.Text = "Value :";
-            // 
-            // ValueTextBox
-            // 
-            ValueTextBox.Location = new Point(295, 30);
-            ValueTextBox.Name = "ValueTextBox";
-            ValueTextBox.Size = new Size(120, 27);
-            ValueTextBox.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -364,8 +364,8 @@ namespace DatabaseReader
         private StatusStrip StatusStrip;
         private ToolStripStatusLabel StatusToolStripLabel;
         private Button OpenButton;
-        private Label label1;
-        private ComboBox TabelsComboBox;
+        private Label TableLabel;
+        private ComboBox TablesComboBox;
         private Label CountOfRowsLabel;
         private TextBox CountOfRowsTextBox;
         private Button ExportToExcelButton;
