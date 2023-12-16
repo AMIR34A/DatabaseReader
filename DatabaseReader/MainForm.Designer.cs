@@ -43,17 +43,21 @@ namespace DatabaseReader
             AuthenticationLabel = new Label();
             ServerNameLabel = new Label();
             DatabasesGroupBox = new GroupBox();
+            CountOfRowsLabel = new Label();
+            CountOfRowsTextBox = new TextBox();
             label1 = new Label();
             ExportToExcelButton = new Button();
             OpenButton = new Button();
             TabelsComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
-            IdTextBox = new TextBox();
-            IdLabel = new Label();
             DeleteButton = new Button();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
             OperationGroupBox = new GroupBox();
+            Idlabel = new Label();
+            DeleteByComboBox = new ComboBox();
+            ValueLabel = new Label();
+            ValueTextBox = new TextBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -158,6 +162,8 @@ namespace DatabaseReader
             // 
             // DatabasesGroupBox
             // 
+            DatabasesGroupBox.Controls.Add(CountOfRowsLabel);
+            DatabasesGroupBox.Controls.Add(CountOfRowsTextBox);
             DatabasesGroupBox.Controls.Add(label1);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
@@ -169,6 +175,23 @@ namespace DatabaseReader
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
+            // 
+            // CountOfRowsLabel
+            // 
+            CountOfRowsLabel.AutoSize = true;
+            CountOfRowsLabel.Location = new Point(6, 125);
+            CountOfRowsLabel.Name = "CountOfRowsLabel";
+            CountOfRowsLabel.Size = new Size(55, 20);
+            CountOfRowsLabel.TabIndex = 3;
+            CountOfRowsLabel.Text = "Count :";
+            // 
+            // CountOfRowsTextBox
+            // 
+            CountOfRowsTextBox.Location = new Point(67, 122);
+            CountOfRowsTextBox.Name = "CountOfRowsTextBox";
+            CountOfRowsTextBox.ReadOnly = true;
+            CountOfRowsTextBox.Size = new Size(95, 27);
+            CountOfRowsTextBox.TabIndex = 4;
             // 
             // label1
             // 
@@ -221,25 +244,9 @@ namespace DatabaseReader
             DatabasesComboBox.TabIndex = 0;
             DatabasesComboBox.SelectedValueChanged += DatabasesComboBox_SelectedValueChanged;
             // 
-            // IdTextBox
-            // 
-            IdTextBox.Location = new Point(41, 26);
-            IdTextBox.Name = "IdTextBox";
-            IdTextBox.Size = new Size(95, 27);
-            IdTextBox.TabIndex = 4;
-            // 
-            // IdLabel
-            // 
-            IdLabel.AutoSize = true;
-            IdLabel.Location = new Point(6, 29);
-            IdLabel.Name = "IdLabel";
-            IdLabel.Size = new Size(29, 20);
-            IdLabel.TabIndex = 3;
-            IdLabel.Text = "Id :";
-            // 
             // DeleteButton
             // 
-            DeleteButton.Location = new Point(438, 24);
+            DeleteButton.Location = new Point(437, 29);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(94, 29);
             DeleteButton.TabIndex = 1;
@@ -266,15 +273,53 @@ namespace DatabaseReader
             // 
             // OperationGroupBox
             // 
-            OperationGroupBox.Controls.Add(IdTextBox);
-            OperationGroupBox.Controls.Add(IdLabel);
+            OperationGroupBox.Controls.Add(ValueLabel);
+            OperationGroupBox.Controls.Add(Idlabel);
             OperationGroupBox.Controls.Add(DeleteButton);
+            OperationGroupBox.Controls.Add(ValueTextBox);
+            OperationGroupBox.Controls.Add(DeleteByComboBox);
+            OperationGroupBox.Enabled = false;
             OperationGroupBox.Location = new Point(12, 415);
             OperationGroupBox.Name = "OperationGroupBox";
-            OperationGroupBox.Size = new Size(537, 69);
+            OperationGroupBox.Size = new Size(537, 72);
             OperationGroupBox.TabIndex = 3;
             OperationGroupBox.TabStop = false;
             OperationGroupBox.Text = "Operation";
+            // 
+            // Idlabel
+            // 
+            Idlabel.AutoSize = true;
+            Idlabel.Location = new Point(6, 33);
+            Idlabel.Name = "Idlabel";
+            Idlabel.Size = new Size(80, 20);
+            Idlabel.TabIndex = 3;
+            Idlabel.Text = "Delete by :";
+            // 
+            // DeleteByComboBox
+            // 
+            DeleteByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DeleteByComboBox.FlatStyle = FlatStyle.Popup;
+            DeleteByComboBox.FormattingEnabled = true;
+            DeleteByComboBox.Location = new Point(92, 30);
+            DeleteByComboBox.Name = "DeleteByComboBox";
+            DeleteByComboBox.Size = new Size(139, 28);
+            DeleteByComboBox.TabIndex = 0;
+            // 
+            // ValueLabel
+            // 
+            ValueLabel.AutoSize = true;
+            ValueLabel.Location = new Point(237, 33);
+            ValueLabel.Name = "ValueLabel";
+            ValueLabel.Size = new Size(52, 20);
+            ValueLabel.TabIndex = 3;
+            ValueLabel.Text = "Value :";
+            // 
+            // ValueTextBox
+            // 
+            ValueTextBox.Location = new Point(295, 30);
+            ValueTextBox.Name = "ValueTextBox";
+            ValueTextBox.Size = new Size(120, 27);
+            ValueTextBox.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -321,10 +366,14 @@ namespace DatabaseReader
         private Button OpenButton;
         private Label label1;
         private ComboBox TabelsComboBox;
-        private Label IdLabel;
-        private TextBox IdTextBox;
+        private Label CountOfRowsLabel;
+        private TextBox CountOfRowsTextBox;
         private Button ExportToExcelButton;
         private Button DeleteButton;
         private GroupBox OperationGroupBox;
+        private Label Idlabel;
+        private ComboBox DeleteByComboBox;
+        private Label ValueLabel;
+        private TextBox ValueTextBox;
     }
 }
