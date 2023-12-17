@@ -33,10 +33,18 @@ public class Repository : IRepository
 
     public async Task<bool> DeleteAsync(string tableName,string deleteBy,string value)
     {
+        try 
+        {
         await _connection.OpenAsync();
         using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE [{deleteBy}] = '{value}'", _connection);
         int result = await command.ExecuteNonQueryAsync();
+            await _connection.CloseAsync();
         return result > 0;
+    }
+        catch
+        {
+            return false;
+        }
     }
 
     public void UpdateConnectionString(string connectionString) => _connection.ConnectionString = connectionString;
