@@ -32,6 +32,7 @@ namespace DatabaseReader
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             ConnectServerGroupBox = new GroupBox();
             ConnectButton = new Button();
             AuthenticationComboBox = new ComboBox();
@@ -331,6 +332,7 @@ namespace DatabaseReader
             Controls.Add(DatabasesGroupBox);
             Controls.Add(ConnectServerGroupBox);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Database Reader";
