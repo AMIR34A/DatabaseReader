@@ -191,7 +191,11 @@ public partial class MainForm : Form
             MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-
+        else if(string.IsNullOrEmpty(ValueTextBox.Text))
+        {
+            MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
         var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}",DeleteByComboBox.Text, ValueTextBox.Text);
         if (result)
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
