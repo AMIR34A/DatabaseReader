@@ -32,6 +32,12 @@ public partial class MainForm : Form
             return;
         }
 
+        if(AuthenticationComboBox.Text.Equals("SQL Server Authentication") && (string.IsNullOrEmpty(UserNameTextBox.Text) || string.IsNullOrEmpty(PasswordTextBox.Text)))
+        {
+            MessageBox.Show("You should enter username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         _repository.UpdateConnectionString(GenerateConnectionString());
         string sqlQuery = "SELECT name FROM sys.databases";
 
