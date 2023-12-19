@@ -204,7 +204,11 @@ public partial class MainForm : Form
         }
         var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}",DeleteByComboBox.Text, ValueTextBox.Text);
         if (result)
+        {
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int count = await _repository.GetCountAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}");
+            CountOfRowsTextBox.Text = count.ToString();
+        }
         else
             MessageBox.Show("Something went wrong", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
