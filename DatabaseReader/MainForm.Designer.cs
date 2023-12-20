@@ -59,6 +59,7 @@ namespace DatabaseReader
             Idlabel = new Label();
             ValueTextBox = new TextBox();
             DeleteByComboBox = new ComboBox();
+            ExportToJsonButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -166,6 +167,7 @@ namespace DatabaseReader
             DatabasesGroupBox.Controls.Add(CountOfRowsLabel);
             DatabasesGroupBox.Controls.Add(CountOfRowsTextBox);
             DatabasesGroupBox.Controls.Add(TableLabel);
+            DatabasesGroupBox.Controls.Add(ExportToJsonButton);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TablesComboBox);
@@ -188,7 +190,7 @@ namespace DatabaseReader
             // 
             // CountOfRowsTextBox
             // 
-            CountOfRowsTextBox.Location = new Point(67, 122);
+            CountOfRowsTextBox.Location = new Point(69, 121);
             CountOfRowsTextBox.Name = "CountOfRowsTextBox";
             CountOfRowsTextBox.ReadOnly = true;
             CountOfRowsTextBox.Size = new Size(95, 27);
@@ -322,6 +324,16 @@ namespace DatabaseReader
             DeleteByComboBox.Size = new Size(139, 28);
             DeleteByComboBox.TabIndex = 0;
             // 
+            // ExportToJsonButton
+            // 
+            ExportToJsonButton.Location = new Point(193, 121);
+            ExportToJsonButton.Name = "ExportToJsonButton";
+            ExportToJsonButton.Size = new Size(117, 29);
+            ExportToJsonButton.TabIndex = 1;
+            ExportToJsonButton.Text = "Export to JSON";
+            ExportToJsonButton.UseVisualStyleBackColor = true;
+            ExportToJsonButton.Click += ExportToExcelButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -377,5 +389,6 @@ namespace DatabaseReader
         private ComboBox DeleteByComboBox;
         private Label ValueLabel;
         private TextBox ValueTextBox;
+        private Button ExportToJsonButton;
     }
 }
