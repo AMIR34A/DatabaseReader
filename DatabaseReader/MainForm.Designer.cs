@@ -47,6 +47,7 @@ namespace DatabaseReader
             CountOfRowsLabel = new Label();
             CountOfRowsTextBox = new TextBox();
             TableLabel = new Label();
+            ExportToJsonButton = new Button();
             ExportToExcelButton = new Button();
             OpenButton = new Button();
             TablesComboBox = new ComboBox();
@@ -59,7 +60,9 @@ namespace DatabaseReader
             Idlabel = new Label();
             ValueTextBox = new TextBox();
             DeleteByComboBox = new ComboBox();
-            ExportToJsonButton = new Button();
+            UpdateButton = new Button();
+            NewValueTextBox = new TextBox();
+            NewValueLabel = new Label();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -205,6 +208,15 @@ namespace DatabaseReader
             TableLabel.TabIndex = 2;
             TableLabel.Text = "Tables :";
             // 
+            // ExportToJsonButton
+            // 
+            ExportToJsonButton.Location = new Point(193, 121);
+            ExportToJsonButton.Name = "ExportToJsonButton";
+            ExportToJsonButton.Size = new Size(117, 29);
+            ExportToJsonButton.TabIndex = 1;
+            ExportToJsonButton.Text = "Export to JSON";
+            ExportToJsonButton.UseVisualStyleBackColor = true;
+            // 
             // ExportToExcelButton
             // 
             ExportToExcelButton.Location = new Point(316, 121);
@@ -261,7 +273,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 499);
+            StatusStrip.Location = new Point(0, 522);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -277,14 +289,17 @@ namespace DatabaseReader
             // OperationGroupBox
             // 
             OperationGroupBox.Controls.Add(ValueLabel);
+            OperationGroupBox.Controls.Add(NewValueLabel);
             OperationGroupBox.Controls.Add(Idlabel);
+            OperationGroupBox.Controls.Add(UpdateButton);
             OperationGroupBox.Controls.Add(DeleteButton);
+            OperationGroupBox.Controls.Add(NewValueTextBox);
             OperationGroupBox.Controls.Add(ValueTextBox);
             OperationGroupBox.Controls.Add(DeleteByComboBox);
             OperationGroupBox.Enabled = false;
             OperationGroupBox.Location = new Point(12, 415);
             OperationGroupBox.Name = "OperationGroupBox";
-            OperationGroupBox.Size = new Size(537, 72);
+            OperationGroupBox.Size = new Size(537, 97);
             OperationGroupBox.TabIndex = 3;
             OperationGroupBox.TabStop = false;
             OperationGroupBox.Text = "Operation";
@@ -292,7 +307,7 @@ namespace DatabaseReader
             // ValueLabel
             // 
             ValueLabel.AutoSize = true;
-            ValueLabel.Location = new Point(237, 33);
+            ValueLabel.Location = new Point(254, 33);
             ValueLabel.Name = "ValueLabel";
             ValueLabel.Size = new Size(52, 20);
             ValueLabel.TabIndex = 3;
@@ -303,13 +318,13 @@ namespace DatabaseReader
             Idlabel.AutoSize = true;
             Idlabel.Location = new Point(6, 33);
             Idlabel.Name = "Idlabel";
-            Idlabel.Size = new Size(80, 20);
+            Idlabel.Size = new Size(135, 20);
             Idlabel.TabIndex = 3;
-            Idlabel.Text = "Delete by :";
+            Idlabel.Text = "Delete/Update by :";
             // 
             // ValueTextBox
             // 
-            ValueTextBox.Location = new Point(295, 30);
+            ValueTextBox.Location = new Point(312, 31);
             ValueTextBox.Name = "ValueTextBox";
             ValueTextBox.Size = new Size(120, 27);
             ValueTextBox.TabIndex = 4;
@@ -319,26 +334,41 @@ namespace DatabaseReader
             DeleteByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             DeleteByComboBox.FlatStyle = FlatStyle.Popup;
             DeleteByComboBox.FormattingEnabled = true;
-            DeleteByComboBox.Location = new Point(92, 30);
+            DeleteByComboBox.Location = new Point(147, 31);
             DeleteByComboBox.Name = "DeleteByComboBox";
-            DeleteByComboBox.Size = new Size(139, 28);
+            DeleteByComboBox.Size = new Size(101, 28);
             DeleteByComboBox.TabIndex = 0;
             // 
-            // ExportToJsonButton
+            // UpdateButton
             // 
-            ExportToJsonButton.Location = new Point(193, 121);
-            ExportToJsonButton.Name = "ExportToJsonButton";
-            ExportToJsonButton.Size = new Size(117, 29);
-            ExportToJsonButton.TabIndex = 1;
-            ExportToJsonButton.Text = "Export to JSON";
-            ExportToJsonButton.UseVisualStyleBackColor = true;
-            ExportToJsonButton.Click += ExportToExcelButton_Click;
+            UpdateButton.Location = new Point(437, 62);
+            UpdateButton.Name = "UpdateButton";
+            UpdateButton.Size = new Size(94, 29);
+            UpdateButton.TabIndex = 1;
+            UpdateButton.Text = "Update";
+            UpdateButton.UseVisualStyleBackColor = true;
+            // 
+            // NewValueTextBox
+            // 
+            NewValueTextBox.Location = new Point(97, 63);
+            NewValueTextBox.Name = "NewValueTextBox";
+            NewValueTextBox.Size = new Size(334, 27);
+            NewValueTextBox.TabIndex = 4;
+            // 
+            // NewValueLabel
+            // 
+            NewValueLabel.AutoSize = true;
+            NewValueLabel.Location = new Point(6, 66);
+            NewValueLabel.Name = "NewValueLabel";
+            NewValueLabel.Size = new Size(85, 20);
+            NewValueLabel.TabIndex = 3;
+            NewValueLabel.Text = "New value :";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 525);
+            ClientSize = new Size(561, 548);
             Controls.Add(OperationGroupBox);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
@@ -390,5 +420,12 @@ namespace DatabaseReader
         private Label ValueLabel;
         private TextBox ValueTextBox;
         private Button ExportToJsonButton;
+        private Label label2;
+        private Label label1;
+        private Button UpdateButton;
+        private Label NewValueLabel;
+        private TextBox NewValueTextBox;
+        private TextBox textBox1;
+        private ComboBox comboBox1;
     }
 }
