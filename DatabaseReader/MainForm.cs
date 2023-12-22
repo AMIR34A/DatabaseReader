@@ -2,7 +2,6 @@ using DatabaseReader.Repositories;
 using IronXL;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -32,7 +31,7 @@ public partial class MainForm : Form
             return;
         }
 
-        if(AuthenticationComboBox.Text.Equals("SQL Server Authentication") && (string.IsNullOrEmpty(UserNameTextBox.Text) || string.IsNullOrEmpty(PasswordTextBox.Text)))
+        if (AuthenticationComboBox.Text.Equals("SQL Server Authentication") && (string.IsNullOrEmpty(UserNameTextBox.Text) || string.IsNullOrEmpty(PasswordTextBox.Text)))
         {
             MessageBox.Show("You should enter username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
@@ -197,12 +196,12 @@ public partial class MainForm : Form
             MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        else if(string.IsNullOrEmpty(ValueTextBox.Text))
+        else if (string.IsNullOrEmpty(ValueTextBox.Text))
         {
             MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}",DeleteByComboBox.Text, ValueTextBox.Text);
+        var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteByComboBox.Text, ValueTextBox.Text);
         if (result)
         {
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -211,5 +210,10 @@ public partial class MainForm : Form
         }
         else
             MessageBox.Show("Something went wrong", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    private void UpdateButton_Click(object sender, EventArgs e)
+    {
+
     }
 }
