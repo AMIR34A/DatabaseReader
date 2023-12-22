@@ -57,12 +57,12 @@ namespace DatabaseReader
             StatusToolStripLabel = new ToolStripStatusLabel();
             OperationGroupBox = new GroupBox();
             ValueLabel = new Label();
+            NewValueLabel = new Label();
             Idlabel = new Label();
-            ValueTextBox = new TextBox();
-            DeleteByComboBox = new ComboBox();
             UpdateButton = new Button();
             NewValueTextBox = new TextBox();
-            NewValueLabel = new Label();
+            ValueTextBox = new TextBox();
+            DeleteByComboBox = new ComboBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -313,6 +313,15 @@ namespace DatabaseReader
             ValueLabel.TabIndex = 3;
             ValueLabel.Text = "Value :";
             // 
+            // NewValueLabel
+            // 
+            NewValueLabel.AutoSize = true;
+            NewValueLabel.Location = new Point(6, 66);
+            NewValueLabel.Name = "NewValueLabel";
+            NewValueLabel.Size = new Size(85, 20);
+            NewValueLabel.TabIndex = 3;
+            NewValueLabel.Text = "New value :";
+            // 
             // Idlabel
             // 
             Idlabel.AutoSize = true;
@@ -321,6 +330,23 @@ namespace DatabaseReader
             Idlabel.Size = new Size(135, 20);
             Idlabel.TabIndex = 3;
             Idlabel.Text = "Delete/Update by :";
+            // 
+            // UpdateButton
+            // 
+            UpdateButton.Location = new Point(437, 62);
+            UpdateButton.Name = "UpdateButton";
+            UpdateButton.Size = new Size(94, 29);
+            UpdateButton.TabIndex = 1;
+            UpdateButton.Text = "Update";
+            UpdateButton.UseVisualStyleBackColor = true;
+            UpdateButton.Click += UpdateButton_Click;
+            // 
+            // NewValueTextBox
+            // 
+            NewValueTextBox.Location = new Point(97, 63);
+            NewValueTextBox.Name = "NewValueTextBox";
+            NewValueTextBox.Size = new Size(334, 27);
+            NewValueTextBox.TabIndex = 4;
             // 
             // ValueTextBox
             // 
@@ -338,31 +364,6 @@ namespace DatabaseReader
             DeleteByComboBox.Name = "DeleteByComboBox";
             DeleteByComboBox.Size = new Size(101, 28);
             DeleteByComboBox.TabIndex = 0;
-            // 
-            // UpdateButton
-            // 
-            UpdateButton.Location = new Point(437, 62);
-            UpdateButton.Name = "UpdateButton";
-            UpdateButton.Size = new Size(94, 29);
-            UpdateButton.TabIndex = 1;
-            UpdateButton.Text = "Update";
-            UpdateButton.UseVisualStyleBackColor = true;
-            // 
-            // NewValueTextBox
-            // 
-            NewValueTextBox.Location = new Point(97, 63);
-            NewValueTextBox.Name = "NewValueTextBox";
-            NewValueTextBox.Size = new Size(334, 27);
-            NewValueTextBox.TabIndex = 4;
-            // 
-            // NewValueLabel
-            // 
-            NewValueLabel.AutoSize = true;
-            NewValueLabel.Location = new Point(6, 66);
-            NewValueLabel.Name = "NewValueLabel";
-            NewValueLabel.Size = new Size(85, 20);
-            NewValueLabel.TabIndex = 3;
-            NewValueLabel.Text = "New value :";
             // 
             // MainForm
             // 
