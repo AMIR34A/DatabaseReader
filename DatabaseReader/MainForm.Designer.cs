@@ -216,6 +216,7 @@ namespace DatabaseReader
             ExportToJsonButton.TabIndex = 1;
             ExportToJsonButton.Text = "Export to JSON";
             ExportToJsonButton.UseVisualStyleBackColor = true;
+            ExportToJsonButton.Click += ExportToJsonButton_Click;
             // 
             // ExportToExcelButton
             // 

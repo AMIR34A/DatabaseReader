@@ -1,7 +1,12 @@
 using DatabaseReader.Repositories;
+using Google.Protobuf;
 using IronXL;
 using Microsoft.Data.SqlClient;
+using SixLabors.ImageSharp.Metadata.Profiles.Icc;
 using System.Data;
+using System.Text.Json;
+using System.Windows.Forms;
+using System.Xml;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -215,5 +220,32 @@ public partial class MainForm : Form
     private void UpdateButton_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private async void ExportToJsonButton_Click(object sender, EventArgs e)
+    {
+        List<IEnumerable<object>> items = new List<IEnumerable<object>>();
+        var tableData = await GetTableData();
+
+        foreach (DataRow row in tableData.Item2.Rows)
+        {
+            object[] objects = new object[row.ItemArray.Length];
+
+            for (int i = 0; i < row.ItemArray.Length; i++)
+                objects[i] = row.ItemArray[i] != DBNull.Value ? row.ItemArray[i] : "-";
+
+            items.Add(objects);
+        }
+        string jsonString = JsonSerializer.Serialize(items);
+        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog()
+        {
+            SelectedPath = "C:\\Desktop"
+        };
+        folderBrowserDialog.ShowDialog();
+        if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
+        {
+            File.WriteAllText($"{folderBrowserDialog.SelectedPath}\\{TablesComboBox.Text}.json",jsonString);
+            MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
