@@ -224,6 +224,12 @@ public partial class MainForm : Form
 
     private async void ExportToJsonButton_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(TablesComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        {
+            MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         List<IEnumerable<object>> items = new List<IEnumerable<object>>();
         var tableData = await GetTableData();
 
