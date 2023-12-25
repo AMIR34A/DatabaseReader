@@ -196,12 +196,7 @@ public partial class MainForm : Form
 
     private async void DeleteButton_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(CountOfRowsTextBox.Text))
-        {
-            MessageBox.Show("Please enter an id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-        }
-        else if (string.IsNullOrEmpty(ValueTextBox.Text))
+        if (string.IsNullOrEmpty(ValueTextBox.Text))
         {
             MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
