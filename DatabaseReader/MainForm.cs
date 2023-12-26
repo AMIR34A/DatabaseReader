@@ -214,7 +214,11 @@ public partial class MainForm : Form
 
     private void UpdateButton_Click(object sender, EventArgs e)
     {
-
+        if (string.IsNullOrEmpty(TablesComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
+        {
+            MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
     }
 
     private async void ExportToJsonButton_Click(object sender, EventArgs e)
