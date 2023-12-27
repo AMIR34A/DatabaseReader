@@ -219,6 +219,11 @@ public partial class MainForm : Form
             MessageBox.Show("Please select a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+        if (string.IsNullOrEmpty(ValueTextBox.Text))
+        {
+            MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
     }
 
     private async void ExportToJsonButton_Click(object sender, EventArgs e)
