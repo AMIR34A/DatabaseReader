@@ -58,11 +58,11 @@ namespace DatabaseReader
             OperationGroupBox = new GroupBox();
             ValueLabel = new Label();
             NewValueLabel = new Label();
-            Idlabel = new Label();
+            DeleteOrUpdateLabel = new Label();
             UpdateButton = new Button();
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
-            DeleteByComboBox = new ComboBox();
+            DeleteOrUpdateByComboBox = new ComboBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -291,12 +291,12 @@ namespace DatabaseReader
             // 
             OperationGroupBox.Controls.Add(ValueLabel);
             OperationGroupBox.Controls.Add(NewValueLabel);
-            OperationGroupBox.Controls.Add(Idlabel);
+            OperationGroupBox.Controls.Add(DeleteOrUpdateLabel);
             OperationGroupBox.Controls.Add(UpdateButton);
             OperationGroupBox.Controls.Add(DeleteButton);
             OperationGroupBox.Controls.Add(NewValueTextBox);
             OperationGroupBox.Controls.Add(ValueTextBox);
-            OperationGroupBox.Controls.Add(DeleteByComboBox);
+            OperationGroupBox.Controls.Add(DeleteOrUpdateByComboBox);
             OperationGroupBox.Enabled = false;
             OperationGroupBox.Location = new Point(12, 415);
             OperationGroupBox.Name = "OperationGroupBox";
@@ -323,14 +323,14 @@ namespace DatabaseReader
             NewValueLabel.TabIndex = 3;
             NewValueLabel.Text = "New value :";
             // 
-            // Idlabel
+            // DeleteOrUpdateLabel
             // 
-            Idlabel.AutoSize = true;
-            Idlabel.Location = new Point(6, 33);
-            Idlabel.Name = "Idlabel";
-            Idlabel.Size = new Size(135, 20);
-            Idlabel.TabIndex = 3;
-            Idlabel.Text = "Delete/Update by :";
+            DeleteOrUpdateLabel.AutoSize = true;
+            DeleteOrUpdateLabel.Location = new Point(6, 33);
+            DeleteOrUpdateLabel.Name = "DeleteOrUpdateLabel";
+            DeleteOrUpdateLabel.Size = new Size(135, 20);
+            DeleteOrUpdateLabel.TabIndex = 3;
+            DeleteOrUpdateLabel.Text = "Delete/Update by :";
             // 
             // UpdateButton
             // 
@@ -356,15 +356,15 @@ namespace DatabaseReader
             ValueTextBox.Size = new Size(120, 27);
             ValueTextBox.TabIndex = 4;
             // 
-            // DeleteByComboBox
+            // DeleteOrUpdateByComboBox
             // 
-            DeleteByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            DeleteByComboBox.FlatStyle = FlatStyle.Popup;
-            DeleteByComboBox.FormattingEnabled = true;
-            DeleteByComboBox.Location = new Point(147, 31);
-            DeleteByComboBox.Name = "DeleteByComboBox";
-            DeleteByComboBox.Size = new Size(101, 28);
-            DeleteByComboBox.TabIndex = 0;
+            DeleteOrUpdateByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DeleteOrUpdateByComboBox.FlatStyle = FlatStyle.Popup;
+            DeleteOrUpdateByComboBox.FormattingEnabled = true;
+            DeleteOrUpdateByComboBox.Location = new Point(147, 31);
+            DeleteOrUpdateByComboBox.Name = "DeleteOrUpdateByComboBox";
+            DeleteOrUpdateByComboBox.Size = new Size(101, 28);
+            DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -417,8 +417,8 @@ namespace DatabaseReader
         private Button ExportToExcelButton;
         private Button DeleteButton;
         private GroupBox OperationGroupBox;
-        private Label Idlabel;
-        private ComboBox DeleteByComboBox;
+        private Label DeleteOrUpdateLabel;
+        private ComboBox DeleteOrUpdateByComboBox;
         private Label ValueLabel;
         private TextBox ValueTextBox;
         private Button ExportToJsonButton;

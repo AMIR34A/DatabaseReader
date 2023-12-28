@@ -128,7 +128,7 @@ public partial class MainForm : Form
         var table = await GetTableData();
         foreach (DataRow row in table.Item1.Rows)
             tables.Add(row["Column_NAME"].ToString());
-        DeleteByComboBox.DataSource = tables;
+        DeleteOrUpdateByComboBox.DataSource = tables;
     }
 
     private string GenerateConnectionString()
@@ -201,7 +201,7 @@ public partial class MainForm : Form
             MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteByComboBox.Text, ValueTextBox.Text);
+        var result = await _repository.DeleteAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteOrUpdateByComboBox.Text, ValueTextBox.Text);
         if (result)
         {
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
