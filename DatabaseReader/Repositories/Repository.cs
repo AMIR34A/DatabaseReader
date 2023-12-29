@@ -11,7 +11,7 @@ public class Repository : IRepository
 
     public Repository(string connectionString) => _connection = new SqlConnection(connectionString);
 
-    public async Task<DataTable> ExecuteSQLCommandAsync(string query) 
+    public async Task<DataTable> ExecuteSQLCommandAsync(string query)
     {
         using SqlCommand command = new SqlCommand(query, _connection);
         await command.Connection.OpenAsync();
@@ -31,16 +31,32 @@ public class Repository : IRepository
         return count;
     }
 
-    public async Task<bool> DeleteAsync(string tableName,string deleteBy,string value)
+    public async Task<bool> DeleteAsync(string tableName, string deleteBy, string value)
     {
-        try 
+        try
         {
-        await _connection.OpenAsync();
-        using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE [{deleteBy}] = '{value}'", _connection);
-        int result = await command.ExecuteNonQueryAsync();
+            await _connection.OpenAsync();
+            using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE [{deleteBy}] = '{value}'", _connection);
+            int result = await command.ExecuteNonQueryAsync();
             await _connection.CloseAsync();
-        return result > 0;
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
+
+    public async Task<bool> UpdateAsync(string tableName, string updateBy, string value,string newValue)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            using SqlCommand command = new SqlCommand($"UPDATE {tableName} SET {updateBy} = '{newValue}' WHERE {value} = '{newValue}'", _connection);
+            int result = await command.ExecuteNonQueryAsync();
+            await _connection.CloseAsync();
+            return result > 0;
+        }
         catch
         {
             return false;

@@ -8,4 +8,5 @@ public interface IRepository : IDisposable
     void UpdateConnectionString(string connectionString);
     Task<int> GetCountAsync(string tableName);
     Task<bool> DeleteAsync(string tableName,string deleteBy, string value);
+    Task<bool> UpdateAsync(string tableName, string updateBy, string value, string newValue);
 }
