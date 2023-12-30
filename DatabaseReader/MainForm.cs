@@ -212,7 +212,7 @@ public partial class MainForm : Form
             MessageBox.Show("Something went wrong", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
-    private void UpdateButton_Click(object sender, EventArgs e)
+    private async void UpdateButton_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(TablesComboBox.Text) || DatabasesComboBox.Text.Equals("Choose..."))
         {
@@ -224,6 +224,9 @@ public partial class MainForm : Form
             MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+        var result = await _repository.UpdateAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteOrUpdateByComboBox.Text, ValueTextBox.Text, NewValueTextBox.Text);
+        if(result)
+            MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private async void ExportToJsonButton_Click(object sender, EventArgs e)

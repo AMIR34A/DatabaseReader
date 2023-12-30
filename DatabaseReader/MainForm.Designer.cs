@@ -422,12 +422,8 @@ namespace DatabaseReader
         private Label ValueLabel;
         private TextBox ValueTextBox;
         private Button ExportToJsonButton;
-        private Label label2;
-        private Label label1;
         private Button UpdateButton;
         private Label NewValueLabel;
         private TextBox NewValueTextBox;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
     }
 }
