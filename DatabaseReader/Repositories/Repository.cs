@@ -47,7 +47,7 @@ public class Repository : IRepository
         finally
         {
             await _connection.CloseAsync();
-    }
+        }
     }
 
     public async Task<bool> UpdateAsync(string tableName, string updateBy, string value,string newValue)
@@ -55,14 +55,17 @@ public class Repository : IRepository
         try
         {
             await _connection.OpenAsync();
-            using SqlCommand command = new SqlCommand($"UPDATE {tableName} SET {updateBy} = '{newValue}' WHERE {value} = '{newValue}'", _connection);
+            using SqlCommand command = new SqlCommand($"UPDATE {tableName} SET {updateBy} = '{newValue}' WHERE {updateBy} = '{value}'", _connection);
             int result = await command.ExecuteNonQueryAsync();
-            await _connection.CloseAsync();
             return result > 0;
         }
         catch
         {
             return false;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
         }
     }
 
