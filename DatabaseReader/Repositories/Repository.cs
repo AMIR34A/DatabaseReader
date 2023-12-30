@@ -38,13 +38,16 @@ public class Repository : IRepository
             await _connection.OpenAsync();
             using SqlCommand command = new SqlCommand($"DELETE FROM {tableName} WHERE [{deleteBy}] = '{value}'", _connection);
             int result = await command.ExecuteNonQueryAsync();
-            await _connection.CloseAsync();
             return result > 0;
         }
         catch
         {
             return false;
         }
+        finally
+        {
+            await _connection.CloseAsync();
+    }
     }
 
     public async Task<bool> UpdateAsync(string tableName, string updateBy, string value,string newValue)
