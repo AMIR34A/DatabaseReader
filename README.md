@@ -1,5 +1,5 @@
 # DatabaseReader
-> A app for management databases
+> A simple app for management databases
 ## :hammer_and_wrench:	Feature :
 + **You can connect to your local and server.**
 + **You can switch between databases and tables.**
