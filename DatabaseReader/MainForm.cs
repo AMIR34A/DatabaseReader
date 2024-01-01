@@ -224,6 +224,11 @@ public partial class MainForm : Form
             MessageBox.Show("Please enter a value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+        if (string.IsNullOrEmpty(NewValueTextBox.Text))
+        {
+            MessageBox.Show("Please enter a new value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
         var result = await _repository.UpdateAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteOrUpdateByComboBox.Text, ValueTextBox.Text, NewValueTextBox.Text);
         if(result)
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
