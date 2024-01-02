@@ -1,12 +1,8 @@
 using DatabaseReader.Repositories;
-using Google.Protobuf;
 using IronXL;
 using Microsoft.Data.SqlClient;
-using SixLabors.ImageSharp.Metadata.Profiles.Icc;
 using System.Data;
 using System.Text.Json;
-using System.Windows.Forms;
-using System.Xml;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -45,7 +41,7 @@ public partial class MainForm : Form
         _repository.UpdateConnectionString(GenerateConnectionString());
         string sqlQuery = "SELECT name FROM sys.databases";
 
-        using var dataTable = await _repository.ExecuteSQLCommandAsync(sqlQuery);
+        using var dataTable = await Task.Run(() => _repository.ExecuteSQLCommandAsync(sqlQuery));
         List<string> databases = new List<string>() { "Choose..." };
 
         foreach (DataRow row in dataTable.Rows)
@@ -230,7 +226,7 @@ public partial class MainForm : Form
             return;
         }
         var result = await _repository.UpdateAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}", DeleteOrUpdateByComboBox.Text, ValueTextBox.Text, NewValueTextBox.Text);
-        if(result)
+        if (result)
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
@@ -262,7 +258,7 @@ public partial class MainForm : Form
         folderBrowserDialog.ShowDialog();
         if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
         {
-            File.WriteAllText($"{folderBrowserDialog.SelectedPath}\\{TablesComboBox.Text}.json",jsonString);
+            File.WriteAllText($"{folderBrowserDialog.SelectedPath}\\{TablesComboBox.Text}.json", jsonString);
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
