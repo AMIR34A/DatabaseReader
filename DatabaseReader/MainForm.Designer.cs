@@ -63,6 +63,8 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
+            RemeberMeLabel = new Label();
+            RemeberMeCheckBox = new CheckBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -71,6 +73,8 @@ namespace DatabaseReader
             // 
             // ConnectServerGroupBox
             // 
+            ConnectServerGroupBox.Controls.Add(RemeberMeCheckBox);
+            ConnectServerGroupBox.Controls.Add(RemeberMeLabel);
             ConnectServerGroupBox.Controls.Add(ConnectButton);
             ConnectServerGroupBox.Controls.Add(AuthenticationComboBox);
             ConnectServerGroupBox.Controls.Add(UserNameTextBox);
@@ -366,6 +370,24 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
+            // RemeberMeLabel
+            // 
+            RemeberMeLabel.AutoSize = true;
+            RemeberMeLabel.Location = new Point(6, 189);
+            RemeberMeLabel.Name = "RemeberMeLabel";
+            RemeberMeLabel.Size = new Size(0, 20);
+            RemeberMeLabel.TabIndex = 4;
+            // 
+            // RemeberMeCheckBox
+            // 
+            RemeberMeCheckBox.AutoSize = true;
+            RemeberMeCheckBox.Location = new Point(6, 188);
+            RemeberMeCheckBox.Name = "RemeberMeCheckBox";
+            RemeberMeCheckBox.Size = new Size(116, 24);
+            RemeberMeCheckBox.TabIndex = 6;
+            RemeberMeCheckBox.Text = "Remeber Me";
+            RemeberMeCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -425,5 +447,7 @@ namespace DatabaseReader
         private Button UpdateButton;
         private Label NewValueLabel;
         private TextBox NewValueTextBox;
+        private CheckBox RemeberMeCheckBox;
+        private Label RemeberMeLabel;
     }
 }
