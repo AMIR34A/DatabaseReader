@@ -117,11 +117,11 @@ public partial class MainForm : Form
 
     private async void TablesComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
-        int count = await _repository.GetCountAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}");
+        int count = await Invoke(() => _repository.GetCountAsync($"{DatabasesComboBox.Text}.{TablesComboBox.Text}"));
         CountOfRowsTextBox.Text = count.ToString();
         OperationGroupBox.Enabled = true;
         List<string> tables = new List<string>();
-        var table = await GetTableData();
+        var table = await Invoke(GetTableData);
         foreach (DataRow row in table.Item1.Rows)
             tables.Add(row["Column_NAME"].ToString());
         DeleteOrUpdateByComboBox.DataSource = tables;
