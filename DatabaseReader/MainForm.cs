@@ -38,6 +38,16 @@ public partial class MainForm : Form
             return;
         }
 
+        if (RemeberMeCheckBox.Checked)
+        {
+            var path = Application.StartupPath + "Servers";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            string filePath = path + "\\Servers.json";
+            if (!File.Exists(filePath))
+                File.Create(filePath);
+        }
+
         _repository.UpdateConnectionString(GenerateConnectionString());
         string sqlQuery = "SELECT name FROM sys.databases";
 
