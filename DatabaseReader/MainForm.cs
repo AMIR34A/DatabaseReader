@@ -1,8 +1,10 @@
+using DatabaseReader.Models;
 using DatabaseReader.Repositories;
 using IronXL;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -46,6 +48,19 @@ public partial class MainForm : Form
             string filePath = path + "\\Servers.json";
             if (!File.Exists(filePath))
                 File.Create(filePath);
+
+            using Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
+            var servers = await JsonSerializer.DeserializeAsync<ServerInformation>(stream);
+            if (!servers.Server.Equals(ServerNameTextBox.Text))
+            {
+                ServerInformation serverInformation = new()
+                {
+                    Server = ServerNameTextBox.Text,
+                    Username = UserNameTextBox.Text,
+                    Password = PasswordTextBox.Text
+                };
+                await JsonSerializer.SerializeAsync(stream, serverInformation);
+            }
         }
 
         _repository.UpdateConnectionString(GenerateConnectionString());
