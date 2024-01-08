@@ -2,9 +2,8 @@ using DatabaseReader.Models;
 using DatabaseReader.Repositories;
 using IronXL;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 using System.Data;
-using System.Text.Json;
-using System.Text.Json.Serialization.Metadata;
 using Color = System.Drawing.Color;
 
 namespace DatabaseReader;
@@ -47,19 +46,25 @@ public partial class MainForm : Form
                 Directory.CreateDirectory(path);
             string filePath = path + "\\Servers.json";
             if (!File.Exists(filePath))
-                File.Create(filePath);
-
-            using Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
-            var servers = await JsonSerializer.DeserializeAsync<ServerInformation>(stream);
-            if (!servers.Server.Equals(ServerNameTextBox.Text))
             {
-                ServerInformation serverInformation = new()
-                {
-                    Server = ServerNameTextBox.Text,
-                    Username = UserNameTextBox.Text,
-                    Password = PasswordTextBox.Text
-                };
-                await JsonSerializer.SerializeAsync(stream, serverInformation);
+                var fileStream = File.Create(filePath);
+                fileStream.Close();
+            }
+            var jsonData = await File.ReadAllTextAsync(filePath);
+            var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData) ?? new List<ServerInformation>();
+
+            ServerInformation serverInformation = new()
+            {
+                Server = ServerNameTextBox.Text,
+                Username = UserNameTextBox.Text,
+                Password = PasswordTextBox.Text
+            };
+
+            if (!servers.Contains(serverInformation))
+            {
+                servers.Add(serverInformation);
+                jsonData = JsonConvert.SerializeObject(servers, Formatting.Indented);
+                await File.WriteAllTextAsync(filePath, jsonData);
             }
         }
 
@@ -275,7 +280,7 @@ public partial class MainForm : Form
 
             items.Add(objects);
         }
-        string jsonString = JsonSerializer.Serialize(items);
+        string jsonString = System.Text.Json.JsonSerializer.Serialize(items);
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog()
         {
             SelectedPath = "C:\\Desktop"
