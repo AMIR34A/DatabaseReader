@@ -53,11 +53,12 @@ public partial class MainForm : Form
             var jsonData = await File.ReadAllTextAsync(filePath);
             var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData) ?? new List<ServerInformation>();
 
+            
             ServerInformation serverInformation = new()
             {
                 Server = ServerNameTextBox.Text,
                 Username = UserNameTextBox.Text,
-                Password = PasswordTextBox.Text
+                Password = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(PasswordTextBox.Text))
             };
 
             if (!servers.Contains(serverInformation))
