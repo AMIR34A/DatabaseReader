@@ -18,11 +18,20 @@ public partial class MainForm : Form
         _repository = new Repository.Repository(GenerateConnectionString());
     }
 
-    private void MainForm_Load(object sender, EventArgs e)
+    private async void MainForm_Load(object sender, EventArgs e)
     {
         DatabasesGroupBox.Enabled = false;
         UserNameLabel.Enabled = PasswordLabel.Enabled = false;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = false;
+        var path = Application.StartupPath + "Servers";
+        string filePath = path + "\\Servers.json";
+
+        if (Directory.Exists(path) && File.Exists(filePath))
+        {
+            string jsonData = await File.ReadAllTextAsync(filePath);
+            var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
+        }
+
     }
 
     private async void ConnectButton_Click(object sender, EventArgs e)
@@ -53,7 +62,7 @@ public partial class MainForm : Form
             var jsonData = await File.ReadAllTextAsync(filePath);
             var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData) ?? new List<ServerInformation>();
 
-            
+
             ServerInformation serverInformation = new()
             {
                 Server = ServerNameTextBox.Text,
