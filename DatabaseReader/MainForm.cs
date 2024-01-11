@@ -36,7 +36,7 @@ public partial class MainForm : Form
 
     private async void ConnectButton_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(ServerNameTextBox.Text))
+        if (string.IsNullOrEmpty(ServerComboBox.Text))
         {
             MessageBox.Show("Please enter server name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
@@ -65,7 +65,7 @@ public partial class MainForm : Form
 
             ServerInformation serverInformation = new()
             {
-                Server = ServerNameTextBox.Text,
+                Server = ServerComboBox.Text,
                 Username = UserNameTextBox.Text,
                 Password = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(PasswordTextBox.Text))
             };
@@ -171,7 +171,7 @@ public partial class MainForm : Form
     {
         bool isIntegratedSecurity = AuthenticationComboBox.Text.Equals("Windows Authentication");
         SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-        sqlConnectionStringBuilder.DataSource = ServerNameTextBox.Text;
+        sqlConnectionStringBuilder.DataSource = ServerComboBox.Text;
         sqlConnectionStringBuilder.IntegratedSecurity = isIntegratedSecurity;
         sqlConnectionStringBuilder.TrustServerCertificate = true;
         if (!isIntegratedSecurity)

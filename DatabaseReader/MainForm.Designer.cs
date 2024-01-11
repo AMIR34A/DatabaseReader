@@ -34,11 +34,12 @@ namespace DatabaseReader
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             ConnectServerGroupBox = new GroupBox();
+            RemeberMeCheckBox = new CheckBox();
+            RemeberMeLabel = new Label();
             ConnectButton = new Button();
             AuthenticationComboBox = new ComboBox();
             UserNameTextBox = new TextBox();
             PasswordTextBox = new TextBox();
-            ServerNameTextBox = new TextBox();
             PasswordLabel = new Label();
             UserNameLabel = new Label();
             AuthenticationLabel = new Label();
@@ -63,8 +64,7 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
-            RemeberMeLabel = new Label();
-            RemeberMeCheckBox = new CheckBox();
+            ServerComboBox = new ComboBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -79,8 +79,8 @@ namespace DatabaseReader
             ConnectServerGroupBox.Controls.Add(AuthenticationComboBox);
             ConnectServerGroupBox.Controls.Add(UserNameTextBox);
             ConnectServerGroupBox.Controls.Add(PasswordTextBox);
-            ConnectServerGroupBox.Controls.Add(ServerNameTextBox);
             ConnectServerGroupBox.Controls.Add(PasswordLabel);
+            ConnectServerGroupBox.Controls.Add(ServerComboBox);
             ConnectServerGroupBox.Controls.Add(UserNameLabel);
             ConnectServerGroupBox.Controls.Add(AuthenticationLabel);
             ConnectServerGroupBox.Controls.Add(ServerNameLabel);
@@ -90,6 +90,24 @@ namespace DatabaseReader
             ConnectServerGroupBox.TabIndex = 0;
             ConnectServerGroupBox.TabStop = false;
             ConnectServerGroupBox.Text = "Connect to Server";
+            // 
+            // RemeberMeCheckBox
+            // 
+            RemeberMeCheckBox.AutoSize = true;
+            RemeberMeCheckBox.Location = new Point(6, 188);
+            RemeberMeCheckBox.Name = "RemeberMeCheckBox";
+            RemeberMeCheckBox.Size = new Size(116, 24);
+            RemeberMeCheckBox.TabIndex = 6;
+            RemeberMeCheckBox.Text = "Remeber Me";
+            RemeberMeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // RemeberMeLabel
+            // 
+            RemeberMeLabel.AutoSize = true;
+            RemeberMeLabel.Location = new Point(6, 189);
+            RemeberMeLabel.Name = "RemeberMeLabel";
+            RemeberMeLabel.Size = new Size(0, 20);
+            RemeberMeLabel.TabIndex = 4;
             // 
             // ConnectButton
             // 
@@ -125,13 +143,6 @@ namespace DatabaseReader
             PasswordTextBox.Name = "PasswordTextBox";
             PasswordTextBox.Size = new Size(405, 27);
             PasswordTextBox.TabIndex = 4;
-            // 
-            // ServerNameTextBox
-            // 
-            ServerNameTextBox.Location = new Point(127, 30);
-            ServerNameTextBox.Name = "ServerNameTextBox";
-            ServerNameTextBox.Size = new Size(405, 27);
-            ServerNameTextBox.TabIndex = 1;
             // 
             // PasswordLabel
             // 
@@ -370,23 +381,14 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
-            // RemeberMeLabel
+            // ServerComboBox
             // 
-            RemeberMeLabel.AutoSize = true;
-            RemeberMeLabel.Location = new Point(6, 189);
-            RemeberMeLabel.Name = "RemeberMeLabel";
-            RemeberMeLabel.Size = new Size(0, 20);
-            RemeberMeLabel.TabIndex = 4;
-            // 
-            // RemeberMeCheckBox
-            // 
-            RemeberMeCheckBox.AutoSize = true;
-            RemeberMeCheckBox.Location = new Point(6, 188);
-            RemeberMeCheckBox.Name = "RemeberMeCheckBox";
-            RemeberMeCheckBox.Size = new Size(116, 24);
-            RemeberMeCheckBox.TabIndex = 6;
-            RemeberMeCheckBox.Text = "Remeber Me";
-            RemeberMeCheckBox.UseVisualStyleBackColor = true;
+            ServerComboBox.FlatStyle = FlatStyle.Popup;
+            ServerComboBox.FormattingEnabled = true;
+            ServerComboBox.Location = new Point(127, 30);
+            ServerComboBox.Name = "ServerComboBox";
+            ServerComboBox.Size = new Size(404, 28);
+            ServerComboBox.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -425,7 +427,6 @@ namespace DatabaseReader
         private ComboBox AuthenticationComboBox;
         private TextBox UserNameTextBox;
         private TextBox PasswordTextBox;
-        private TextBox ServerNameTextBox;
         private Button ConnectButton;
         private GroupBox DatabasesGroupBox;
         private ComboBox DatabasesComboBox;
@@ -449,5 +450,6 @@ namespace DatabaseReader
         private TextBox NewValueTextBox;
         private CheckBox RemeberMeCheckBox;
         private Label RemeberMeLabel;
+        private ComboBox ServerComboBox;
     }
 }
