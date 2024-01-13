@@ -23,6 +23,7 @@ public partial class MainForm : Form
         DatabasesGroupBox.Enabled = false;
         UserNameLabel.Enabled = PasswordLabel.Enabled = false;
         UserNameTextBox.Enabled = PasswordTextBox.Enabled = false;
+
         var path = Application.StartupPath + "Servers";
         string filePath = path + "\\Servers.json";
 
@@ -30,8 +31,8 @@ public partial class MainForm : Form
         {
             string jsonData = await File.ReadAllTextAsync(filePath);
             var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
+            ServerComboBox.DataSource = servers.Select(server => server.Server).ToList();
         }
-
     }
 
     private async void ConnectButton_Click(object sender, EventArgs e)
