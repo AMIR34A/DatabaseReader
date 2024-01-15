@@ -1,6 +1,6 @@
 ﻿namespace DatabaseReader.Models;
 
-enum AuthenticationMode
+public enum AuthenticationMode
 {
     WindowsAuthentication,
     SQLServerAuthentication
