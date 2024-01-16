@@ -68,7 +68,8 @@ public partial class MainForm : Form
             {
                 Server = ServerComboBox.Text,
                 Username = UserNameTextBox.Text,
-                Password = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(PasswordTextBox.Text))
+                Password = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(PasswordTextBox.Text)),
+                AuthenticationMode = AuthenticationComboBox.Text.Equals("SQL Server Authentication") ? AuthenticationMode.SQLServerAuthentication : AuthenticationMode.WindowsAuthentication
             };
 
             if (!servers.Contains(serverInformation))
