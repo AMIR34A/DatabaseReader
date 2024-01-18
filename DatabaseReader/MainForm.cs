@@ -304,4 +304,16 @@ public partial class MainForm : Form
             MessageBox.Show("Done", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
+    private async void ServerComboBox_SelectedValueChanged(object sender, EventArgs e)
+    {
+        var path = Application.StartupPath + "Servers";
+        string filePath = path + "\\Servers.json";
+        if (Directory.Exists(path) && File.Exists(filePath))
+        {
+            string jsonData = await File.ReadAllTextAsync(filePath);
+            var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
+            ServerComboBox.DataSource = servers.Select(server => server.Server).ToList();
+        }
+    }
 }

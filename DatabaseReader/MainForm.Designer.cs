@@ -41,6 +41,7 @@ namespace DatabaseReader
             UserNameTextBox = new TextBox();
             PasswordTextBox = new TextBox();
             PasswordLabel = new Label();
+            ServerComboBox = new ComboBox();
             UserNameLabel = new Label();
             AuthenticationLabel = new Label();
             ServerNameLabel = new Label();
@@ -64,7 +65,6 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
-            ServerComboBox = new ComboBox();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -152,6 +152,16 @@ namespace DatabaseReader
             PasswordLabel.Size = new Size(77, 20);
             PasswordLabel.TabIndex = 0;
             PasswordLabel.Text = "Password :";
+            // 
+            // ServerComboBox
+            // 
+            ServerComboBox.FlatStyle = FlatStyle.Popup;
+            ServerComboBox.FormattingEnabled = true;
+            ServerComboBox.Location = new Point(127, 30);
+            ServerComboBox.Name = "ServerComboBox";
+            ServerComboBox.Size = new Size(404, 28);
+            ServerComboBox.TabIndex = 0;
+            ServerComboBox.SelectedValueChanged += ServerComboBox_SelectedValueChanged;
             // 
             // UserNameLabel
             // 
@@ -380,15 +390,6 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Name = "DeleteOrUpdateByComboBox";
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
-            // 
-            // ServerComboBox
-            // 
-            ServerComboBox.FlatStyle = FlatStyle.Popup;
-            ServerComboBox.FormattingEnabled = true;
-            ServerComboBox.Location = new Point(127, 30);
-            ServerComboBox.Name = "ServerComboBox";
-            ServerComboBox.Size = new Size(404, 28);
-            ServerComboBox.TabIndex = 0;
             // 
             // MainForm
             // 
