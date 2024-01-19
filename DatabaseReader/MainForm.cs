@@ -313,7 +313,14 @@ public partial class MainForm : Form
         {
             string jsonData = await File.ReadAllTextAsync(filePath);
             var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
-            ServerComboBox.DataSource = servers.Select(server => server.Server).ToList();
+            ServerInformation serverInformation = servers.First(server => server.Server == ServerComboBox.Text);
+            if (serverInformation.AuthenticationMode == AuthenticationMode.SQLServerAuthentication)
+            {
+                AuthenticationComboBox.Text = "SQL Server Authentication";
+                UserNameTextBox.Enabled = PasswordTextBox.Enabled = true;
+                UserNameTextBox.Text = serverInformation.Username;
+                PasswordTextBox.Text = serverInformation.Password;
+            }
         }
     }
 }
