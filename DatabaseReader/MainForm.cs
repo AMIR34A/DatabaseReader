@@ -312,14 +312,17 @@ public partial class MainForm : Form
         if (Directory.Exists(path) && File.Exists(filePath))
         {
             string jsonData = await File.ReadAllTextAsync(filePath);
-            var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
-            ServerInformation serverInformation = servers.First(server => server.Server == ServerComboBox.Text);
-            if (serverInformation.AuthenticationMode == AuthenticationMode.SQLServerAuthentication)
+            if (!string.IsNullOrEmpty(jsonData))
             {
-                AuthenticationComboBox.Text = "SQL Server Authentication";
-                UserNameTextBox.Enabled = PasswordTextBox.Enabled = true;
-                UserNameTextBox.Text = serverInformation.Username;
-                PasswordTextBox.Text = serverInformation.Password;
+                var servers = JsonConvert.DeserializeObject<List<ServerInformation>>(jsonData);
+                ServerInformation serverInformation = servers.First(server => server.Server == ServerComboBox.Text);
+                if (serverInformation.AuthenticationMode == AuthenticationMode.SQLServerAuthentication)
+                {
+                    AuthenticationComboBox.Text = "SQL Server Authentication";
+                    UserNameTextBox.Enabled = PasswordTextBox.Enabled = true;
+                    UserNameTextBox.Text = serverInformation.Username;
+                    PasswordTextBox.Text = serverInformation.Password;
+                }
             }
         }
     }
