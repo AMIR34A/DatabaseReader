@@ -321,7 +321,7 @@ public partial class MainForm : Form
                     AuthenticationComboBox.Text = "SQL Server Authentication";
                     UserNameTextBox.Enabled = PasswordTextBox.Enabled = true;
                     UserNameTextBox.Text = serverInformation.Username;
-                    PasswordTextBox.Text = serverInformation.Password;
+                    PasswordTextBox.Text = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(serverInformation.Password));
                 }
             }
         }
