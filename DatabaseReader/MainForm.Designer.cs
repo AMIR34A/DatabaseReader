@@ -141,8 +141,11 @@ namespace DatabaseReader
             // 
             PasswordTextBox.Location = new Point(127, 149);
             PasswordTextBox.Name = "PasswordTextBox";
+            PasswordTextBox.PasswordChar = '*';
             PasswordTextBox.Size = new Size(405, 27);
             PasswordTextBox.TabIndex = 4;
+            PasswordTextBox.MouseEnter += PasswordTextBox_MouseEnter;
+            PasswordTextBox.MouseLeave += PasswordTextBox_MouseLeave;
             // 
             // PasswordLabel
             // 
