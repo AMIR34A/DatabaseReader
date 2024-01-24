@@ -80,6 +80,9 @@ public partial class MainForm : Form
             }
         }
 
+        StatusToolStripLabel.ForeColor = Color.Yellow;
+        StatusToolStripLabel.Text = "Connecting";
+
         _repository.UpdateConnectionString(GenerateConnectionString());
         string sqlQuery = "SELECT name FROM sys.databases";
 
@@ -328,7 +331,6 @@ public partial class MainForm : Form
     }
 
     private void PasswordTextBox_MouseEnter(object sender, EventArgs e) => PasswordTextBox.PasswordChar = '\u0000';
-
 
     private void PasswordTextBox_MouseLeave(object sender, EventArgs e) => PasswordTextBox.PasswordChar = '*';
 }
