@@ -69,8 +69,11 @@ public class Repository : IRepository
         }
     }
 
-    public void UpdateConnectionString(string connectionString) => _connection.ConnectionString = connectionString;
-
+    public void UpdateConnectionString(string connectionString)
+    {
+        _connection.Close();
+        _connection.ConnectionString = connectionString;
+    }
     protected virtual void Dispose(bool disposing)
     {
         if (!disposedValue)
