@@ -203,9 +203,9 @@ namespace DatabaseReader
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TablesComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
-            DatabasesGroupBox.Location = new Point(12, 246);
+            DatabasesGroupBox.Location = new Point(12, 242);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
-            DatabasesGroupBox.Size = new Size(537, 163);
+            DatabasesGroupBox.Size = new Size(537, 211);
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
@@ -302,7 +302,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 522);
+            StatusStrip.Location = new Point(0, 566);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -326,7 +326,7 @@ namespace DatabaseReader
             OperationGroupBox.Controls.Add(ValueTextBox);
             OperationGroupBox.Controls.Add(DeleteOrUpdateByComboBox);
             OperationGroupBox.Enabled = false;
-            OperationGroupBox.Location = new Point(12, 415);
+            OperationGroupBox.Location = new Point(12, 459);
             OperationGroupBox.Name = "OperationGroupBox";
             OperationGroupBox.Size = new Size(537, 97);
             OperationGroupBox.TabIndex = 3;
@@ -398,7 +398,7 @@ namespace DatabaseReader
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 548);
+            ClientSize = new Size(561, 592);
             Controls.Add(OperationGroupBox);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
