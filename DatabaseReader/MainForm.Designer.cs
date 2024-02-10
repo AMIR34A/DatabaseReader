@@ -65,6 +65,7 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
+            DisconnectButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -75,6 +76,7 @@ namespace DatabaseReader
             // 
             ConnectServerGroupBox.Controls.Add(RemeberMeCheckBox);
             ConnectServerGroupBox.Controls.Add(RemeberMeLabel);
+            ConnectServerGroupBox.Controls.Add(DisconnectButton);
             ConnectServerGroupBox.Controls.Add(ConnectButton);
             ConnectServerGroupBox.Controls.Add(AuthenticationComboBox);
             ConnectServerGroupBox.Controls.Add(UserNameTextBox);
@@ -394,6 +396,16 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
+            // DisconnectButton
+            // 
+            DisconnectButton.Location = new Point(338, 189);
+            DisconnectButton.Name = "DisconnectButton";
+            DisconnectButton.Size = new Size(94, 29);
+            DisconnectButton.TabIndex = 5;
+            DisconnectButton.Text = "Disconnect";
+            DisconnectButton.UseVisualStyleBackColor = true;
+            DisconnectButton.Click += ConnectButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -455,5 +467,6 @@ namespace DatabaseReader
         private CheckBox RemeberMeCheckBox;
         private Label RemeberMeLabel;
         private ComboBox ServerComboBox;
+        private Button DisconnectButton;
     }
 }
