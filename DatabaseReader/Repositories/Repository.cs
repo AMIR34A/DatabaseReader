@@ -50,7 +50,7 @@ public class Repository : IRepository
         }
     }
 
-    public async Task<bool> UpdateAsync(string tableName, string updateBy, string value,string newValue)
+    public async Task<bool> UpdateAsync(string tableName, string updateBy, string value, string newValue)
     {
         try
         {
@@ -74,6 +74,9 @@ public class Repository : IRepository
         _connection.Close();
         _connection.ConnectionString = connectionString;
     }
+
+    public async Task CloseConnection() => await _connection.CloseAsync();
+
     protected virtual void Dispose(bool disposing)
     {
         if (!disposedValue)
