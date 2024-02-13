@@ -75,7 +75,7 @@ public class Repository : IRepository
         _connection.ConnectionString = connectionString;
     }
 
-    public async Task CloseConnection() => await _connection.CloseAsync();
+    public async Task CloseConnectionAsync() => await _connection.CloseAsync();
 
     protected virtual void Dispose(bool disposing)
     {
