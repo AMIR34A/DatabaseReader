@@ -36,6 +36,7 @@ namespace DatabaseReader
             ConnectServerGroupBox = new GroupBox();
             RemeberMeCheckBox = new CheckBox();
             RemeberMeLabel = new Label();
+            DisconnectButton = new Button();
             ConnectButton = new Button();
             AuthenticationComboBox = new ComboBox();
             UserNameTextBox = new TextBox();
@@ -65,7 +66,6 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
-            DisconnectButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -110,6 +110,16 @@ namespace DatabaseReader
             RemeberMeLabel.Name = "RemeberMeLabel";
             RemeberMeLabel.Size = new Size(0, 20);
             RemeberMeLabel.TabIndex = 4;
+            // 
+            // DisconnectButton
+            // 
+            DisconnectButton.Location = new Point(338, 189);
+            DisconnectButton.Name = "DisconnectButton";
+            DisconnectButton.Size = new Size(94, 29);
+            DisconnectButton.TabIndex = 5;
+            DisconnectButton.Text = "Disconnect";
+            DisconnectButton.UseVisualStyleBackColor = true;
+            DisconnectButton.Click += DisconnectButton_Click;
             // 
             // ConnectButton
             // 
@@ -395,16 +405,6 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Name = "DeleteOrUpdateByComboBox";
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
-            // 
-            // DisconnectButton
-            // 
-            DisconnectButton.Location = new Point(338, 189);
-            DisconnectButton.Name = "DisconnectButton";
-            DisconnectButton.Size = new Size(94, 29);
-            DisconnectButton.TabIndex = 5;
-            DisconnectButton.Text = "Disconnect";
-            DisconnectButton.UseVisualStyleBackColor = true;
-            DisconnectButton.Click += ConnectButton_Click;
             // 
             // MainForm
             // 

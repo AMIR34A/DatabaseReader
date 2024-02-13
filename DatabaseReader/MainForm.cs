@@ -333,4 +333,6 @@ public partial class MainForm : Form
     private void PasswordTextBox_MouseEnter(object sender, EventArgs e) => PasswordTextBox.PasswordChar = '\u0000';
 
     private void PasswordTextBox_MouseLeave(object sender, EventArgs e) => PasswordTextBox.PasswordChar = '*';
+
+    private async void DisconnectButton_Click(object sender, EventArgs e) => await _repository.CloseConnectionAsync();
 }
