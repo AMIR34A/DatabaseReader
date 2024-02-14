@@ -66,6 +66,7 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
+            DeleteTableButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -212,6 +213,7 @@ namespace DatabaseReader
             DatabasesGroupBox.Controls.Add(TableLabel);
             DatabasesGroupBox.Controls.Add(ExportToJsonButton);
             DatabasesGroupBox.Controls.Add(ExportToExcelButton);
+            DatabasesGroupBox.Controls.Add(DeleteTableButton);
             DatabasesGroupBox.Controls.Add(OpenButton);
             DatabasesGroupBox.Controls.Add(TablesComboBox);
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
@@ -406,6 +408,16 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
+            // DeleteTableButton
+            // 
+            DeleteTableButton.Location = new Point(316, 156);
+            DeleteTableButton.Name = "DeleteTableButton";
+            DeleteTableButton.Size = new Size(116, 29);
+            DeleteTableButton.TabIndex = 1;
+            DeleteTableButton.Text = "Delete Table";
+            DeleteTableButton.UseVisualStyleBackColor = true;
+            DeleteTableButton.Click += OpenButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -468,5 +480,6 @@ namespace DatabaseReader
         private Label RemeberMeLabel;
         private ComboBox ServerComboBox;
         private Button DisconnectButton;
+        private Button DeleteTableButton;
     }
 }
