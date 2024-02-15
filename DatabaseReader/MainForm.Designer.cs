@@ -52,6 +52,7 @@ namespace DatabaseReader
             TableLabel = new Label();
             ExportToJsonButton = new Button();
             ExportToExcelButton = new Button();
+            DeleteTableButton = new Button();
             OpenButton = new Button();
             TablesComboBox = new ComboBox();
             DatabasesComboBox = new ComboBox();
@@ -66,7 +67,6 @@ namespace DatabaseReader
             NewValueTextBox = new TextBox();
             ValueTextBox = new TextBox();
             DeleteOrUpdateByComboBox = new ComboBox();
-            DeleteTableButton = new Button();
             ConnectServerGroupBox.SuspendLayout();
             DatabasesGroupBox.SuspendLayout();
             StatusStrip.SuspendLayout();
@@ -219,7 +219,7 @@ namespace DatabaseReader
             DatabasesGroupBox.Controls.Add(DatabasesComboBox);
             DatabasesGroupBox.Location = new Point(12, 242);
             DatabasesGroupBox.Name = "DatabasesGroupBox";
-            DatabasesGroupBox.Size = new Size(537, 211);
+            DatabasesGroupBox.Size = new Size(537, 195);
             DatabasesGroupBox.TabIndex = 1;
             DatabasesGroupBox.TabStop = false;
             DatabasesGroupBox.Text = "Databases";
@@ -270,6 +270,15 @@ namespace DatabaseReader
             ExportToExcelButton.UseVisualStyleBackColor = true;
             ExportToExcelButton.Click += ExportToExcelButton_Click;
             // 
+            // DeleteTableButton
+            // 
+            DeleteTableButton.Location = new Point(316, 156);
+            DeleteTableButton.Name = "DeleteTableButton";
+            DeleteTableButton.Size = new Size(116, 29);
+            DeleteTableButton.TabIndex = 1;
+            DeleteTableButton.Text = "Delete Table";
+            DeleteTableButton.UseVisualStyleBackColor = true;
+            // 
             // OpenButton
             // 
             OpenButton.Location = new Point(438, 121);
@@ -316,7 +325,7 @@ namespace DatabaseReader
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
             StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
-            StatusStrip.Location = new Point(0, 566);
+            StatusStrip.Location = new Point(0, 558);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
             StatusStrip.TabIndex = 2;
@@ -340,7 +349,7 @@ namespace DatabaseReader
             OperationGroupBox.Controls.Add(ValueTextBox);
             OperationGroupBox.Controls.Add(DeleteOrUpdateByComboBox);
             OperationGroupBox.Enabled = false;
-            OperationGroupBox.Location = new Point(12, 459);
+            OperationGroupBox.Location = new Point(12, 443);
             OperationGroupBox.Name = "OperationGroupBox";
             OperationGroupBox.Size = new Size(537, 97);
             OperationGroupBox.TabIndex = 3;
@@ -408,21 +417,11 @@ namespace DatabaseReader
             DeleteOrUpdateByComboBox.Size = new Size(101, 28);
             DeleteOrUpdateByComboBox.TabIndex = 0;
             // 
-            // DeleteTableButton
-            // 
-            DeleteTableButton.Location = new Point(316, 156);
-            DeleteTableButton.Name = "DeleteTableButton";
-            DeleteTableButton.Size = new Size(116, 29);
-            DeleteTableButton.TabIndex = 1;
-            DeleteTableButton.Text = "Delete Table";
-            DeleteTableButton.UseVisualStyleBackColor = true;
-            DeleteTableButton.Click += OpenButton_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 592);
+            ClientSize = new Size(561, 584);
             Controls.Add(OperationGroupBox);
             Controls.Add(StatusStrip);
             Controls.Add(DatabasesGroupBox);
