@@ -278,6 +278,7 @@ namespace DatabaseReader
             DeleteTableButton.TabIndex = 1;
             DeleteTableButton.Text = "Delete Table";
             DeleteTableButton.UseVisualStyleBackColor = true;
+            DeleteTableButton.Click += DeleteTableButton_Click;
             // 
             // OpenButton
             // 
