@@ -59,6 +59,8 @@ namespace DatabaseReader
             DeleteButton = new Button();
             StatusStrip = new StatusStrip();
             StatusToolStripLabel = new ToolStripStatusLabel();
+            SettingToolStripSplitButton = new ToolStripSplitButton();
+            ResetToolStripMenuItem = new ToolStripMenuItem();
             OperationGroupBox = new GroupBox();
             ValueLabel = new Label();
             NewValueLabel = new Label();
@@ -325,7 +327,7 @@ namespace DatabaseReader
             // StatusStrip
             // 
             StatusStrip.ImageScalingSize = new Size(20, 20);
-            StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel });
+            StatusStrip.Items.AddRange(new ToolStripItem[] { StatusToolStripLabel, SettingToolStripSplitButton });
             StatusStrip.Location = new Point(0, 558);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(561, 26);
@@ -338,6 +340,27 @@ namespace DatabaseReader
             StatusToolStripLabel.Name = "StatusToolStripLabel";
             StatusToolStripLabel.Size = new Size(82, 20);
             StatusToolStripLabel.Text = "Disconnect";
+            // 
+            // SettingToolStripSplitButton
+            // 
+            SettingToolStripSplitButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            SettingToolStripSplitButton.DropDownItems.AddRange(new ToolStripItem[] { ResetToolStripMenuItem });
+            SettingToolStripSplitButton.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            SettingToolStripSplitButton.Image = (System.Drawing.Image)resources.GetObject("SettingToolStripSplitButton.Image");
+            SettingToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            SettingToolStripSplitButton.Name = "SettingToolStripSplitButton";
+            SettingToolStripSplitButton.Size = new Size(75, 24);
+            SettingToolStripSplitButton.Text = "Setting";
+            SettingToolStripSplitButton.TextDirection = ToolStripTextDirection.Horizontal;
+            SettingToolStripSplitButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+            // 
+            // ResetToolStripMenuItem
+            // 
+            ResetToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
+            ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
+            ResetToolStripMenuItem.Size = new Size(224, 26);
+            ResetToolStripMenuItem.Text = "Reset";
+            ResetToolStripMenuItem.Click += ResetToolStripMenuItem_Click;
             // 
             // OperationGroupBox
             // 
@@ -481,5 +504,7 @@ namespace DatabaseReader
         private ComboBox ServerComboBox;
         private Button DisconnectButton;
         private Button DeleteTableButton;
+        private ToolStripSplitButton SettingToolStripSplitButton;
+        private ToolStripMenuItem ResetToolStripMenuItem;
     }
 }
