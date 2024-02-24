@@ -340,4 +340,12 @@ public partial class MainForm : Form
     {
 
     }
+
+    private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var path = Application.StartupPath + "Servers";
+        string filePath = path + "\\Servers.json";
+        if (File.Exists(filePath))
+            File.Delete(filePath);   
+    }
 }
